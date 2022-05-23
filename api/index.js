@@ -17,6 +17,11 @@ require('./config/db');
 const { PORT, COOKIE_SECRET, CORS_ORIGIN, DEBUG } = require('./config/env');
 const { PUBLIC_DIR } = require('./config/globals');
 
+// Route Imports
+const publicRoutes = require('./routes/public.routes');
+const protectedRoutes = require('./routes/protected.routes');
+const privateRoutes = require('./routes/private.routes');
+
 // Settings
 app.set('public', PUBLIC_DIR);
 app.set('port', PORT);
@@ -41,9 +46,9 @@ if (DEBUG) {
 }
 
 // Routes
-// app.use('/api/public', publicRoutes);
-// app.use('/api/protected', protectedRoutes);
-// app.use('/api/private', privateRoutes);
+app.use('/api/public', publicRoutes);
+app.use('/api/protected', protectedRoutes);
+app.use('/api/private', privateRoutes);
 
 // Static Files
 app.use('/files', express.static(app.get('public')));

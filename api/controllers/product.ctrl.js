@@ -1,6 +1,6 @@
 const path = require('path');
 const { nanoid } = require('nanoid');
-const { publicDirPath } = require('../config/globals');
+const { PUBLIC_DIR } = require('../config/globals');
 const {
   createDirectory,
   deleteFileOrDirectory,
@@ -19,7 +19,7 @@ ctrl.createProduct = async (req, res, next) => {
   const product = new Product(productData);
 
   product.sku = nanoid(8);
-  product.absolutePath = path.join(publicDirPath, '/products', product.sku);
+  product.absolutePath = path.join(PUBLIC_DIR, '/products', product.sku);
   product.staticPath = `/files/products/${product.sku}`;
 
   const [, createDirectoryError] = await asyncHandler(
@@ -83,8 +83,8 @@ ctrl.getProducts = async (req, res, next) => {
 
   const [products, findError] = await asyncHandler(
     Product.find(queryFilter)
-      .limit(+limit || 0)
-      .skip(+skip || 0)
+      .limit(parseInt(limit) || 0)
+      .skip(parseInt(skip) || 0)
       .lean()
   );
 
