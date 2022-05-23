@@ -51,33 +51,32 @@ app.use('/files', express.static(app.get('public')));
 // Error Handling
 app.use((error, _req, res, _next) => {
   if (res.headersSent) return;
-  process.env.DEBUG && console.log(error);
+
+  const response = {
+    status: 'SERVER_ERROR',
+    message: error.message || 'Ocurrion un error interno en el servidor.',
+  };
+
+  if (DEBUG) {
+    console.log(error);
+    response.error = error;
+  }
 
   if (error.name === 'MongoError') {
-    return res.status(500).json({
-      status: 'DB_ERROR',
-      message: error.message || 'Ocurrio un error con la base de datos',
-      error,
-    });
+    response.status = 'DB_ERROR';
+    response.message = `'Ocurrio un error con la base de datos'`;
   }
 
   if (error.name === 'ValidationError') {
-    return res.status(400).json({
-      status: 'VALID_ERROR',
-      message: `Hubo un error al registrar el documento en la base de datos.
-        La información proporcionada no es válida`,
-      error,
-    });
+    response.status = 'VALID_ERROR';
+    response.message = `Hubo un error al registrar el documento en la base de datos. La información proporcionada no es válida`;
   }
 
-  return res.status(500).json({
-    status: error.status || 'SERVER_ERROR',
-    message: error.message || 'Ocurrion un error interno en el servidor.',
-    error,
-  });
+  return res.status(500).json(response);
 });
 
 // Startup
-app.listen(app.get('port'), () =>
-  console.log(`Server listening on port: ${app.get('port')}`)
+app.listen(
+  app.get('port'),
+  () => DEBUG && console.log(`Server listening on port: ${app.get('port')}`)
 );
