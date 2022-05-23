@@ -1,0 +1,82 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media (max-width: 37.5em) {
+      @content;
+    } // 600px
+  }
+
+  @if $breakpoint==phone-s {
+    @media (max-width: 20em) {
+      @content;
+    } // 320 px
+  }
+
+  @if $breakpoint==phone-m {
+    @media (max-width: 23.4375em) {
+      @content;
+    } // 375 px
+  }
+
+  @if $breakpoint==phone-l {
+    @media (max-width: 26.5625em) {
+      @content;
+    } // 425 px
+  }
+
+  @if $breakpoint==tab {
+    @media (max-width: 48em) {
+      @content;
+    } // 768 px
+  }
+
+  @if $breakpoint==tab-land {
+    @media (max-width: 64em) {
+      @content;
+    } // 1024 px
+  }
+
+  @if $breakpoint==lap {
+    @media (max-width: 90em) {
+      @content;
+    } // 1440 px
+  }
+
+  @if $breakpoint==tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint==from-tab-land {
+    @media (min-width: 56.25em) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint==google {
+    @media (max-width: 71.37em) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint==tab-land {
+    @media (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+
+  @if $breakpoint==big-desk {
+    @media (min-width: 112.5em) {
+      @content;
+    } //1800px
+  }
+}
+
+@mixin overrideAutoCompleteStyles {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    @content;
+  }
+}

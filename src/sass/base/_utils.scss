@@ -1,0 +1,107 @@
+@for $i from 0 through 6 {
+  .p {
+    &-#{$i} {
+      padding: #{$i}rem;
+    }
+
+    &y-#{$i} {
+      padding-top: #{$i}rem;
+      padding-bottom: #{$i}rem;
+    }
+
+    &x-#{$i} {
+      padding-left: #{$i}rem;
+      padding-right: #{$i}rem;
+    }
+
+    &l-#{$i} {
+      padding-left: #{$i}rem;
+    }
+
+    &r-#{$i} {
+      padding-right: #{$i}rem;
+    }
+  }
+
+  .m {
+    &-#{$i} {
+      padding: #{$i}rem;
+    }
+
+    &y-#{$i} {
+      padding-top: #{$i}rem;
+      padding-bottom: #{$i}rem;
+    }
+
+    &x-#{$i} {
+      padding-left: #{$i}rem;
+      padding-right: #{$i}rem;
+    }
+
+    &l-#{$i} {
+      padding-left: #{$i}rem;
+    }
+
+    &r-#{$i} {
+      padding-right: #{$i}rem;
+    }
+
+    &-auto {
+      margin: auto !important;
+    }
+
+    &x-auto {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    &y-auto {
+      margin-top: auto !important;
+      margin-bottom: auto !important;
+    }
+
+    &r-auto {
+      margin-right: auto !important;
+    }
+
+    &l-auto {
+      margin-left: auto !important;
+    }
+
+    &b-auto {
+      margin-bottom: auto !important;
+    }
+
+    &t-auto {
+      margin-top: auto !important;
+    }
+  }
+}
+
+.d {
+  &-f {
+    display: flex;
+  }
+
+  &-b {
+    display: block;
+  }
+
+  &-g {
+    display: grid;
+  }
+
+  &-i {
+    display: inline;
+  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+
+  &-h {
+    max-height: 100%;
+    width: auto;
+  }
+}

@@ -1,0 +1,55 @@
+.toast {
+  position: fixed;
+  bottom: -4rem;
+  right: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 45rem;
+  padding: 0.5rem 2rem;
+  background-color: $color-primary-l;
+  color: darken($color-primary-l, 25%);
+  z-index: 10;
+  font-family: $ff-alt;
+  border: 1px solid;
+  border-radius: 2px;
+  opacity: 0;
+  animation: toastDown 0.25s;
+
+  &.visible {
+    opacity: 1;
+    animation: toastUp 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  &.success {
+    background-color: lighten($color-success, 30%) !important;
+    color: $color-success !important;
+  }
+
+  &.info {
+    background-color: $color-primary-l !important;
+    color: darken($color-primary-l, 25%) !important;
+  }
+
+  &.warning {
+    background-color: lighten($color-warning, 35%) !important;
+    color: $color-warning !important;
+  }
+
+  &.error {
+    background-color: lighten($color-error, 24%) !important;
+    color: $color-error !important;
+  }
+
+  &__content {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  &__close {
+    font-size: 1.8rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
+}
