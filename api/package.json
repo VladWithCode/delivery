@@ -1,0 +1,24 @@
+{
+  "name": "delivery-app-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "VladWithCode",
+  "license": "MIT",
+  "dependencies": {
+    "busboy-body-parser": "^0.3.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4",
+    "stripe": "^9.2.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}
