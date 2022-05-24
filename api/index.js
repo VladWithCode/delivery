@@ -29,7 +29,7 @@ app.set('port', PORT);
 // Middlewares
 app.use(
   cors({
-    origin: CORS_ORIGIN,
+    origin: CORS_ORIGIN || '*',
     credentials: true,
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
   })

@@ -1,6 +1,6 @@
 const env = {};
 
-env.CORS_ORIGIN = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+env.CORS_ORIGIN = process.env.CORS_ORIGIN?.split(',');
 
 env.NODE_ENV = process.env.NODE_ENV || 'development';
 
