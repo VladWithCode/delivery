@@ -61,24 +61,16 @@ ctrl.createProduct = async (req, res, next) => {
 };
 
 ctrl.getProducts = async (req, res, next) => {
-  const { skus, names, ctgs, tags, limit, skip } = req.query;
+  const { ctg, size, limit, skip } = req.query;
 
   const queryFilter = {};
 
-  if (names) {
-    queryFilter.name = names.split(',');
+  if (ctg) {
+    queryFilter.categories = ctg.trim();
   }
 
-  if (skus) {
-    queryFilter.sku = skus.split(',');
-  }
-
-  if (ctgs) {
-    queryFilter.categories = ctgs.split(',');
-  }
-
-  if (tags) {
-    queryFilter.tags = tags.split(',');
+  if (size) {
+    queryFilter.size = size.trim();
   }
 
   const [products, findError] = await asyncHandler(
@@ -90,10 +82,10 @@ ctrl.getProducts = async (req, res, next) => {
 
   if (findError) return next(findError);
 
-  if ((names || ctgs) && (!products || products.length === 0)) {
+  if (ctg && (!products || products.length === 0)) {
     return res.json({
       status: 'NOT_FOUND',
-      message: 'No se encontraron productos',
+      message: 'No se encontraron productos con esta categoria',
     });
   }
 
