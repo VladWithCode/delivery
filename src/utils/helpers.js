@@ -4,3 +4,9 @@ export const priceToString = price => {
 
   return `${parseInt(int || 0).toLocaleString()}.${d || '00'}`;
 };
+
+export const isEmptyObject = o => {
+  if (!o || Object.keys(o).length === 0) return true;
+
+  return false;
+};
