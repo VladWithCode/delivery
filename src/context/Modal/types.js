@@ -1,0 +1,3 @@
+export const SET_MODAL_ACTIVE = 'SET_MODAL_ACTIVE';
+
+export const SET_MODAL_INFO = 'SET_MODAL_INFO';
