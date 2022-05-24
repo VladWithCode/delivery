@@ -9,7 +9,7 @@
   padding: 0.5rem 2rem;
   background-color: $color-primary-l;
   color: darken($color-primary-l, 25%);
-  z-index: 10;
+  z-index: $z-toast;
   font-family: $ff-alt;
   border: 1px solid;
   border-radius: 2px;

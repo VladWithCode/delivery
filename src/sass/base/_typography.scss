@@ -1,37 +1,37 @@
 @for $i from 1 through 6 {
   .h#{$i} {
-    font-size: 2.4rem * calc(4 / $i);
+    font-size: 2.4rem * calc(4 / $i) !important;
   }
 
   .fs-#{$i} {
-    font-size: 2.8rem * calc($i / 2);
+    font-size: 2.8rem * calc($i / 2) !important;
   }
 }
 
 .fw-200 {
-  font-weight: 200;
+  font-weight: 200 !important;
 }
 
 .fw-light,
 .fw-300 {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 .fw-regular,
 .fw-400 {
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .fw-500 {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 .fw-bold,
 .fw-600 {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .fw-xbold,
 .fw-700 {
-  font-weight: 700;
+  font-weight: 700 !important;
 }

@@ -1,0 +1,37 @@
+.menu {
+  width: 80rem;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2rem 0.5rem;
+
+  &__title {
+    font-size: 2rem;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  &__listing {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding: 0.5rem 1rem 1.5rem;
+    margin: 1rem -1rem 1.5rem;
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+    flex: 1 0 23rem;
+    height: 35rem;
+    margin: 0;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.card {
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  font-family: $ff-alt;
+  background-color: whitesmoke;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 5px 1px $color-gray-l;
+  position: relative;
+
+  &__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: $color-black;
+  }
+
+  &__img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    margin-bottom: auto;
+  }
+
+  &__title {
+    margin: 1rem 0;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
+  &__description {
+    font-size: 0.9rem;
+    color: $color-gray-l;
+  }
+
+  &__price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-left: auto;
+    margin-top: 1.5rem;
+    color: $color-info;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    font-size: 1.6rem;
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+    border-radius: 4px;
+    color: $color-white;
+    padding: 0.5rem 2rem;
+    margin: auto;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      color: $color-primary-d;
+      border-color: $color-primary-d;
+      background-color: $color-primary-l;
+    }
+  }
+
+  &__qty {
+    display: flex;
+    background-color: rgba($color-gray-l, 0.35);
+    width: 25%;
+    border-radius: 4px;
+    overflow: hidden;
+
+    span {
+      display: flex;
+      flex: 1 1 30%;
+      padding: 0.5rem 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .display {
+      background-color: $color-white;
+      border: 1px solid rgba($color-gray-l, 0.45);
+      flex-basis: 40%;
+    }
+
+    .minus,
+    .plus {
+      cursor: pointer;
+
+      &:hover,
+      &:active {
+        background-color: rgba($color-gray-l, 0.85);
+      }
+    }
+  }
+}

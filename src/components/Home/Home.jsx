@@ -1,7 +1,14 @@
 import React from 'react';
+import Menu from '../Menu/Menu';
+import Modal from '../Modal/Modal';
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <Menu />
+      <Modal />
+    </>
+  );
 }
 
 export default Home;

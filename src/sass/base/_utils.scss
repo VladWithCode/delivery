@@ -1,49 +1,65 @@
 @for $i from 0 through 6 {
   .p {
     &-#{$i} {
-      padding: #{$i}rem;
+      padding: #{$i}rem !important;
     }
 
     &y-#{$i} {
-      padding-top: #{$i}rem;
-      padding-bottom: #{$i}rem;
+      padding-top: #{$i}rem !important;
+      padding-bottom: #{$i}rem !important;
     }
 
     &x-#{$i} {
-      padding-left: #{$i}rem;
-      padding-right: #{$i}rem;
+      padding-left: #{$i}rem !important;
+      padding-right: #{$i}rem !important;
     }
 
     &l-#{$i} {
-      padding-left: #{$i}rem;
+      padding-left: #{$i}rem !important;
     }
 
     &r-#{$i} {
-      padding-right: #{$i}rem;
+      padding-right: #{$i}rem !important;
+    }
+
+    &b-#{$i} {
+      padding-bottom: #{$i}rem !important;
+    }
+
+    &t-#{$i} {
+      padding-top: #{$i}rem !important;
     }
   }
 
   .m {
     &-#{$i} {
-      padding: #{$i}rem;
+      margin: #{$i}rem !important;
     }
 
     &y-#{$i} {
-      padding-top: #{$i}rem;
-      padding-bottom: #{$i}rem;
+      margin-top: #{$i}rem !important;
+      margin-bottom: #{$i}rem !important;
     }
 
     &x-#{$i} {
-      padding-left: #{$i}rem;
-      padding-right: #{$i}rem;
+      margin-left: #{$i}rem !important;
+      margin-right: #{$i}rem !important;
     }
 
     &l-#{$i} {
-      padding-left: #{$i}rem;
+      margin-left: #{$i}rem !important;
     }
 
     &r-#{$i} {
-      padding-right: #{$i}rem;
+      margin-right: #{$i}rem !important;
+    }
+
+    &b-#{$i} {
+      margin-bottom: #{$i}rem !important;
+    }
+
+    &t-#{$i} {
+      margin-top: #{$i}rem !important;
     }
 
     &-auto {
