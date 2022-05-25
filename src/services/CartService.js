@@ -87,7 +87,7 @@ class CartService {
     let isInCart = false;
 
     for (const i of newCart.items) {
-      if (i._id === product._id) {
+      if (i.product === product._id) {
         isInCart = true;
         i.qty = i.qty + qty;
         i.totalPrice = +(product.price * i.qty).toFixed(2);
