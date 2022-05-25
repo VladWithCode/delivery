@@ -1,12 +1,51 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import ToastContext from '../../context/Toast/ToastContext';
+import ShopService from '../../services/ShopService';
 import Listing from './Listing';
+import Sidebar from './Sidebar';
 
 function Menu() {
+  const { displayErrorToast } = useContext(ToastContext);
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
+  const [initializing, setInitializing] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [options, setOptions] = useState({
+    skip: 0,
+    limit: 8,
+    ctg: '',
+    size: '',
+  });
+
+  const { skip, limit, ctg, size } = options;
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await ShopService.fetchProducts({ skip, limit, ctg, size });
+      setInitializing(false);
+
+      if (res.status !== 'OK') {
+        if (res.error) console.log(res.error);
+        displayErrorToast(res.message || res.error.message);
+        return;
+      }
+
+      setProducts(res.products?.length > 0 ? res.products : []);
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <div className='menu'>
-      <h1 className='menu__title'>Pollos</h1>
-      <h5 className='menu__subtitle'>¿Qué pollo se te antoja hoy?</h5>
-      <Listing />
+      <h1 className='menu__title'>Pollo</h1>
+      <h5 className='menu__subtitle'>¿Qué se te antoja comer hoy?</h5>
+      <span
+        className='menu__toggler'
+        onClick={() => setIsSidebarActive(!isSidebarActive)}>
+        {isSidebarActive ? <>&times;</> : 'MENU'}
+      </span>
+      <Sidebar state={{ isSidebarActive, setIsSidebarActive }} />
+      <Listing initializing={initializing} products={products} />
     </div>
   );
 }

@@ -5,14 +5,16 @@
   padding: 2rem 0.5rem;
 
   &__title {
-    font-size: 2rem;
+    font-size: 3rem;
     padding-left: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   &__subtitle {
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 400;
+    color: $color-gray-l;
+    margin-bottom: 1rem;
   }
 
   &__listing {
@@ -25,13 +27,54 @@
     list-style: none;
   }
 
+  &__spinner {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 0.5rem solid transparent;
+    border-bottom-color: $color-gray-l;
+    animation: spinner 1s ease-in-out infinite;
+    margin: 3rem auto;
+  }
+
+  &__no-items {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $color-gray-l;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 3rem 0;
+  }
+
   &__item {
     flex: 1 0 23rem;
-    height: 35rem;
+    cursor: pointer;
     margin: 0;
+    transition: transform 0.35s, box-shadow 0.35s;
+    user-select: none;
 
     &:not(:last-child) {
       margin-right: 2rem;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 8px -2px $color-gray-l;
+    }
+  }
+
+  &__toggler {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: 600;
+    color: $color-gray-l;
+    top: 3rem;
+    right: 4rem;
+    z-index: $z-toast;
+
+    &:hover,
+    &:active {
+      color: $color-black;
     }
   }
 }
