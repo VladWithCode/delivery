@@ -18,6 +18,10 @@ export const ModalProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(ModalReducer, initialState);
 
+  const resetModalInfo = () => {
+    dispatch({ type: SET_MODAL_INFO, payload: initialState.info });
+  };
+
   const setModalActive = isActive => {
     dispatch({ type: SET_MODAL_ACTIVE, payload: isActive });
   };
@@ -36,6 +40,7 @@ export const ModalProvider = ({ children }) => {
         info: state.info,
         setModalActive,
         setModalInfo,
+        resetModalInfo,
       }}>
       {children}
     </ModalContext.Provider>
