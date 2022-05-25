@@ -151,6 +151,7 @@ class CartService {
       }
     }
 
+    newCart.items = newItems;
     newCart.subtotal = newSubtotal;
     newCart.total = newSubtotal + newCart.tax + newCart.shipment;
 
