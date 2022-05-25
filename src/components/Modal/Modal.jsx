@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { SERVER_URL } from '../../config/globals';
 import ModalContext from '../../context/Modal/ModalContext';
 import { priceToString } from '../../utils/helpers';
 
@@ -14,8 +15,12 @@ function Modal() {
         <span className='card__close' onClick={handleModalClose}>
           &times;
         </span>
-        <img src='/img/pollo.png' alt='pollo' className='card__img m-0' />
-        <h4 className='card__title fs-2 fw-500'>{info.title}</h4>
+        <img
+          src={SERVER_URL.concat(info.img)}
+          alt='pollo'
+          className='card__img m-0'
+        />
+        <h4 className='card__title fs-2 fw-500'>{info.name}</h4>
         <p className='card__description fs-1'>{info.description}</p>
         <p className='card__price fs-2'>${priceToString(info.price)}</p>
         <div className='card__controls mt-2'>
