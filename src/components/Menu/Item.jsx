@@ -10,7 +10,7 @@ function Item({ product }) {
     setModalInfo({
       ...product,
       img: product.imgs[0],
-      qty: 0,
+      qty: 1,
     });
     setModalActive(true);
   };
