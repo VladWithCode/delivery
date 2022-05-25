@@ -11,7 +11,7 @@ const ProductSchema = new Schema({
   },
   description: { type: String, maxlength: 160 },
   price: {
-    type: String,
+    type: Number,
     validate: {
       validator: function (v) {
         if (Number.isNaN(+v)) return false;
