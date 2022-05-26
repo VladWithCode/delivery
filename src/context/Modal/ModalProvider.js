@@ -11,7 +11,7 @@ export const ModalProvider = ({ children }) => {
       title: '',
       description: '',
       price: 0,
-      qty: 0,
+      qty: 1,
       shouldUpdate: false,
     },
   };
