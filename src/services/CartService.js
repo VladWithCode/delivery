@@ -86,6 +86,10 @@ class CartService {
     let newSubtotal = 0;
     let isInCart = false;
 
+    if (newCart.items.length === 0) {
+      newSubtotal = product.price * qty;
+    }
+
     for (const i of newCart.items) {
       if (i.product === product._id) {
         isInCart = true;
