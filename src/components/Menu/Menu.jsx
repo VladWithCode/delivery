@@ -36,9 +36,9 @@ function Menu() {
   }, []);
 
   return (
-    <div className='menu'>
-      <h1 className='menu__title'>Pollo</h1>
-      <h5 className='menu__subtitle'>¿Qué se te antoja comer hoy?</h5>
+    <div className='menu container'>
+      <h1 className='menu__title heading'>Pollo</h1>
+      <h5 className='menu__subtitle subtitle'>¿Qué se te antoja comer hoy?</h5>
       <span
         className='menu__toggler'
         onClick={() => setIsSidebarActive(!isSidebarActive)}>
