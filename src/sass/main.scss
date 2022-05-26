@@ -7,6 +7,8 @@
 @import 'base/utils';
 
 @import 'components/card';
+@import 'components/container';
+@import 'components/form';
 @import 'components/menu';
 @import 'components/modal';
 @import 'components/sidebar';
@@ -16,3 +18,5 @@
 @import 'layout/footer';
 @import 'layout/header';
 @import 'layout/navigation';
+
+@import 'pages/checkoutpage';
