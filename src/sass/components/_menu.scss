@@ -1,22 +1,4 @@
 .menu {
-  width: 80rem;
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 2rem 0.5rem;
-
-  &__title {
-    font-size: 3rem;
-    padding-left: 0.5rem;
-    margin-bottom: 2rem;
-  }
-
-  &__subtitle {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: $color-gray-l;
-    margin-bottom: 1rem;
-  }
-
   &__listing {
     width: 100%;
     overflow-x: scroll;
