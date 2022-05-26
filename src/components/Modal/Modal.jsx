@@ -1,12 +1,47 @@
 import React, { useContext } from 'react';
 import { SERVER_URL } from '../../config/globals';
+import CartContext from '../../context/Cart/CartContext';
 import ModalContext from '../../context/Modal/ModalContext';
+import ToastContext from '../../context/Toast/ToastContext';
+import CartService from '../../services/CartService';
 import { priceToString } from '../../utils/helpers';
 
 function Modal() {
-  const { isActive, info, setModalActive } = useContext(ModalContext);
+  const { isActive, info, setModalActive, setModalInfo, resetModalInfo } =
+    useContext(ModalContext);
+  const { setCart } = useContext(CartContext);
+  const { displayErrorToast, displaySuccessToast } = useContext(ToastContext);
 
-  const handleModalClose = () => setModalActive(false);
+  const handleModalClose = () => {
+    setModalActive(false);
+    resetModalInfo();
+  };
+
+  const handleMinusClick = () => {
+    const newQty = info.qty - 1 >= 0 ? info.qty - 1 : 0;
+
+    setModalInfo({ ...info, qty: newQty });
+  };
+
+  const handlePlusClick = () => {
+    const newQty = info.qty + 1;
+
+    setModalInfo({ ...info, qty: newQty });
+  };
+
+  const handleAddToCartClick = async () => {
+    try {
+      const cart = await CartService.addToCart(info, info.qty);
+
+      setCart(cart);
+      displaySuccessToast('Se agrego el producto al carrito');
+      setModalActive(false);
+      resetModalInfo();
+    } catch (err) {
+      console.log(err);
+      displayErrorToast(err.message);
+    }
+  };
 
   return (
     <div className={'modal'.concat(isActive ? ' active' : '')}>
@@ -25,11 +60,17 @@ function Modal() {
         <p className='card__price fs-2'>${priceToString(info.price)}</p>
         <div className='card__controls mt-2'>
           <div className='card__qty'>
-            <span className='minus'>-</span>
+            <span className='minus' onClick={handleMinusClick}>
+              -
+            </span>
             <span className='display'>{info.qty}</span>
-            <span className='plus'>+</span>
+            <span className='plus' onClick={handlePlusClick}>
+              +
+            </span>
           </div>
-          <button className='card__btn mr-0'>Añadir al Carrito</button>
+          <button className='card__btn mr-0' onClick={handleAddToCartClick}>
+            Añadir al Carrito
+          </button>
         </div>
       </div>
     </div>
