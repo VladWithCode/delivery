@@ -1,0 +1,45 @@
+.card-select {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  width: 100%;
+  padding: 3rem 0;
+
+  &__card {
+    flex-direction: row;
+    width: 100%;
+    height: 20rem;
+    overflow: hidden;
+    padding: 3rem 0;
+    color: $color-gray-l;
+    transition: 0.35s;
+
+    &:hover,
+    &:active {
+      color: $color-gray-d;
+      background-color: lighten($color-gray-l, 21%);
+    }
+  }
+
+  &__img {
+    display: flex;
+    flex: 0 1 33%;
+  }
+
+  &__title {
+    flex: 2 1 66%;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: auto;
+  }
+
+  &__icon {
+    width: 5rem;
+    height: 5rem;
+    margin: auto;
+    fill: currentColor;
+  }
+}
