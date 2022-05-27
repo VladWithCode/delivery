@@ -12,6 +12,7 @@ function AppRouter() {
         <Route path='/' element={<App />}>
           <Route index element={<Home />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/pago' element={<Checkout />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
