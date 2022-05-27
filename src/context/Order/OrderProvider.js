@@ -4,6 +4,7 @@ import OrderReducer from './OrderReducer';
 import {
   SET_CHECKOUT_STEP,
   SET_CUSTOMER_INFO,
+  SET_LAST_ORDER,
   SET_PAYMENT_INFO,
   SET_PAYMENT_METHOD,
   SET_STRIPE_CLIENT_SECRET,
@@ -24,6 +25,7 @@ function OrderProvider({ children }) {
       stripeClientSecret: '',
       saleId: '',
     },
+    lastOrder: null,
     checkoutStep: 'CUSTOMER_INFO', // CUSTOMER_INFO | PAYMENT_METHOD_SELECTION | COMPLETE_PAYMENT | ORDER_DETAILS
   };
 
@@ -53,6 +55,10 @@ function OrderProvider({ children }) {
     dispatch({ type: SET_STRIPE_CLIENT_SECRET, payload: secret });
   };
 
+  const setLastOrder = orderData => {
+    dispatch({ type: SET_LAST_ORDER, payload: orderData });
+  };
+
   /**
    *
    * @param {'CUSTOMER_INFO' | 'PAYMENT_METHOD_SELECTION' | 'COMPLETE_PAYMENT' | 'ORDER_DETAILS'} step -
@@ -67,12 +73,14 @@ function OrderProvider({ children }) {
         customerInfo: state.customerInfo,
         paymentInfo: state.paymentInfo,
         checkoutStep: state.checkoutStep,
+        lastOrder: state.lastOrder,
         setCustomerInfo,
         setPaymentInfo,
         setCheckoutStep,
         setPaymentMethod,
         setStripeIntentId,
         setStripeClientSecret,
+        setLastOrder,
       }}>
       {children}
     </OrderContext.Provider>
