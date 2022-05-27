@@ -26,6 +26,13 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const resetCart = () => {
+    dispatch({
+      type: SET_CART,
+      payload: initialState,
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -37,6 +44,7 @@ export const CartProvider = ({ children }) => {
         items: state.items,
         setMiniCartActive,
         setCart,
+        resetCart,
       }}>
       {children}
     </CartContext.Provider>
