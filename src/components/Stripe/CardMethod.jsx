@@ -4,14 +4,17 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
+import CartContext from '../../context/Cart/CartContext';
 import OrderContext from '../../context/Order/OrderContext';
 import ToastContext from '../../context/Toast/ToastContext';
+import StripeService from '../../services/StripeService';
 
 function CardMethod() {
   const { paymentInfo, setStripeIntentId, setStripeClientSecret } =
     useContext(OrderContext);
   const { displaySuccessToast, displayErrorToast, displayInfoToast } =
     useContext(ToastContext);
+  const { resetCart } = useContext(CartContext);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -85,6 +88,21 @@ function CardMethod() {
 
       return;
     }
+
+    const res = await StripeService.saveSaleToDB(stripeIntentId);
+
+    setLoading(false);
+
+    if (res.status !== 'OK') {
+      displayErrorToast(
+        res.message ||
+          'Ocurrio un error en el servidor. Su orden ha sido cancelada'
+      );
+      return;
+    }
+
+    displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
+    resetCart();
   };
 
   return (
