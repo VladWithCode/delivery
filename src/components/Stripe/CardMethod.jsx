@@ -69,7 +69,7 @@ function CardMethod() {
     setLoading(true);
     setDisableButton(true);
 
-    const {} = await stripe.confirmPayment({
+    const { error } = await stripe.confirmPayment({
       elements,
       redirect: 'if_required',
     });
@@ -110,7 +110,9 @@ function CardMethod() {
       <PaymentElement />
       <button
         type='submit'
-        className='btn btn--submit card-method__btn'
+        className={'btn btn--submit card-method__btn'.concat(
+          loading ? ' loading' : ''
+        )}
         disabled={disableButton}>
         <span className='btn-text'>Pagar</span>
         <span className='btn-spinner'></span>
