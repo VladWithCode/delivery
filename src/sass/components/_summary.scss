@@ -188,5 +188,10 @@
     font-size: 2rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
   }
 }

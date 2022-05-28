@@ -1,15 +1,27 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CartContext from '../../context/Cart/CartContext';
+import ToastContext from '../../context/Toast/ToastContext';
 import { priceToString } from '../../utils/helpers';
 import Listing from './Listing';
 
 function Summary() {
+  const navigate = useNavigate();
+  const { displayErrorToast } = useContext(ToastContext);
   const { subtotal, items } = useContext(CartContext);
   const [isActive, setIsActive] = useState(false);
 
   const handleHeaderClick = () => {
     setIsActive(!isActive);
+  };
+
+  const handleBtnClick = () => {
+    if (items.length === 0) {
+      displayErrorToast('Debes agregar articulos a tu carrito');
+      return;
+    }
+
+    navigate('/checkout');
   };
 
   return (
@@ -27,9 +39,12 @@ function Summary() {
         <span className='label'>Subtotal:</span>
         <span className='value'>${priceToString(subtotal)}</span>
       </div>
-      <Link to='/checkout' className='summary__btn'>
+      <button
+        className='summary__btn'
+        onClick={handleBtnClick}
+        disabled={items.length === 0}>
         Realizar Pedido
-      </Link>
+      </button>
     </div>
   );
 }
