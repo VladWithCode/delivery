@@ -25,7 +25,7 @@ ctrl.addToCart = (req, res, next) => {
   const {id} = req.params;
   const { productSku, qty } = req.body;
 
-  const [cart, addError] = await cartService.addToCart(id, productSku, qty);
+  const [cart, addError] = await cartService.addToDBCart(id, productSku, qty);
 
   if (addError) return next(addError);
 
@@ -39,7 +39,7 @@ ctrl.updateItemQty = (req, res, next) => {
   const {id} = req.params;
   const { productSku, qty } = req.body;
 
-  const [cart, updateError] = await cartService.updateItemQty(id, productSku, qty);
+  const [cart, updateError] = await cartService.updateDBCartItemQty(id, productSku, qty);
 
   if (updateError) return next(updateError);
 
@@ -53,7 +53,7 @@ ctrl.deleteFromCart = (req, res, next) => {
   const { id } = req.params;
   const { productSku } = req.body;
 
-  const [cart, deleteError] = await cartService.removeFromCart(id, productSku);
+  const [cart, deleteError] = await cartService.removeFromDBCart(id, productSku);
 
   if (deleteError) return next(deleteError);
 
