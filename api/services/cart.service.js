@@ -22,11 +22,84 @@ class CartService {
     return { total, subtotal, itemsTotals };
   }
 
-  async getCart(id) {
+  addToCart(cart, product, qty) {
+    const newCart = { ...cart };
+    const newItems = [...newCart.items];
+
+    let existsInCart = false;
+    let index = 0;
+
+    for (const item of newItems) {
+      if (item.sku !== productSku) index++;
+      else {
+        existsInCart = true;
+        break;
+      }
+    }
+
+    if (!existsInCart) {
+      newItems.push({
+        product: product._id,
+        sku: product.sku,
+        name: product.name,
+        qty: qty,
+        unitPrice: product.price,
+        total: product.price * qty,
+      });
+    } else {
+      const item = { ...newItems[index] };
+
+      newItems[index] = {
+        ...item,
+        qty: item.qty + qty,
+        total: item.unitPrice * (item.qty + qty),
+      };
+
+      const { total, subtotal } = this.calculateTotals(newCart);
+
+      newCart.subtotal = subtotal;
+      newCart.total = total;
+    }
+
+    return newCart;
+  }
+
+  async safeCalculateTotals(cart) {
+    const newItems = [];
+    const hashedProducts = {};
+    const productIds = cart.items.map(i => {
+      hashedProducts[i.product] = i;
+      return i.product;
+    });
+
+    const [products, findProductError] = await asyncHandler(
+      Product.find({
+        _id: productIds,
+      })
+    );
+
+    if (findProductError) return [false, findProductError];
+
+    products.forEach(p => {
+      const hashedProduct = hashedProducts[p._id];
+
+      if (!hashedProduct) return;
+
+      newItems.push({
+        ...hashedProduct,
+        unitPrice: p.price,
+        total: p.price * hashedProduct.qty,
+      });
+    });
+
+    return this.calculateTotals({ ...cart, items: newItems });
+  }
+
+  async getDBCart(id) {
     return await asyncHandler(Cart.findById(id).lean());
   }
 
-  async addToCart(cartId, productSku, qty) {
+  async addToDBCart(cartId, productSku, qty) {
     const [cart, findCartError] = await asyncHandler(Cart.findById(cartId));
 
     if (findCartError) return [false, findCartError];
@@ -49,40 +122,9 @@ class CartService {
         { status: 'INSUFFICIENT_STOCK', message: 'Stock insuficiente' },
       ];
 
-    let exists = false;
-    let index = 0;
+    const newCart = this.addToCart(cart, product, qty);
 
-    for (const item of cart.items) {
-      if (item.sku !== productSku) index++;
-      else {
-        exists = true;
-        break;
-      }
-    }
-
-    if (!exists) {
-      cart.items.push({
-        product: product._id,
-        sku: product.sku,
-        name: product.name,
-        qty: qty,
-        unitPrice: product.price,
-        total: product.price * qty,
-      });
-    } else {
-      const item = cart.items[index];
-
-      cart.items[index] = {
-        ...cart.items[index],
-        qty: item.qty + qty,
-        total: item.unitPrice * (item.qty + qty),
-      };
-
-      const { total, subtotal } = this.calculateTotals(cart);
-
-      cart.subtotal = subtotal;
-      cart.total = total;
-    }
+    cart.set(newCart);
 
     const [, saveError] = await asyncHandler(cart.save());
 
@@ -91,7 +133,7 @@ class CartService {
     return [cart, false];
   }
 
-  async updateItemQty(cartId, productSku, qty) {
+  async updateDBCartItemQty(cartId, productSku, qty) {
     const [cart, findCartError] = await asyncHandler(Cart.findById(cartId));
 
     if (findCartError) return [false, findCartError];
@@ -155,7 +197,7 @@ class CartService {
     return [cart, false];
   }
 
-  async removeFromCart(cartId, productSku) {
+  async removeFromDBCart(cartId, productSku) {
     const [cart, findCartError] = await asyncHandler(Cart.findById(cartId));
 
     if (findCartError) return [false, findCartError];
