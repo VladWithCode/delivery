@@ -5,3 +5,5 @@ const asyncHandler = async p => {
     return [null, err];
   }
 };
+
+export default asyncHandler;
