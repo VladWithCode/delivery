@@ -23,7 +23,6 @@ function OrderProvider({ children }) {
       method: 'cash',
       stripeIntentId: '',
       stripeClientSecret: '',
-      saleId: '',
     },
     lastOrder: null,
     checkoutStep: 'CUSTOMER_INFO', // CUSTOMER_INFO | PAYMENT_METHOD_SELECTION | COMPLETE_PAYMENT | ORDER_DETAILS
