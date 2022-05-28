@@ -12,7 +12,7 @@ export const ToastProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(ToastReducer, initialState);
 
-  const setIsVisible = (isVisible, autoHide) => {
+  const setIsVisible = (isVisible, autoHide = false) => {
     dispatch({ type: SET_IS_VISIBLE, payload: isVisible });
 
     if (!!isVisible && autoHide) {
