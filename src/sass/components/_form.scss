@@ -12,11 +12,45 @@
     width: 100%;
     padding: 0 2rem;
 
-    &--btns {
+    &--btns,
+    &--check {
       flex-direction: row;
       margin-top: 1.2rem;
       margin-bottom: 0.2rem;
     }
+
+    &--check {
+      margin-bottom: 1rem;
+
+      .check-wrap {
+        position: relative;
+        flex: 0 0 14px;
+        height: 14px;
+        border-radius: 2px;
+        margin: auto 1rem;
+        border: 1px solid;
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &__paraph {
+    line-height: 2.2rem;
+  }
+
+  &__paraph,
+  &__paraph > &__label {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+
+  &__paraph > &__label {
+    padding: 0;
+  }
+
+  &__link {
+    color: $color-info;
+    text-decoration: underline;
   }
 
   &__label {
@@ -33,6 +67,25 @@
     padding: 0.5rem 1rem;
   }
 
+  &__check {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    appearance: none;
+    background-color: transparent;
+    mask-image: url('../../../public/svg/check.svg');
+    mask-size: 12px 10px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+
+    &:checked {
+      background-color: $color-info;
+    }
+  }
+
   &__btn {
     color: $color-white;
     background-color: $color-gray;
@@ -42,6 +95,12 @@
     margin: auto;
     margin-right: 1rem;
     font-weight: 500;
+    transition: opacity 0.35s;
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.65;
+    }
 
     &--submit {
       background-color: $color-success;
