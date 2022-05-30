@@ -43,7 +43,20 @@ function Stripe() {
     <div className='stripe'>
       {secretLoaded ? (
         <Elements
-          options={{ clientSecret: stripeClientSecret }}
+          options={{
+            clientSecret: stripeClientSecret,
+            appearance: {
+              theme: 'stripe',
+              variables: {
+                colorPrimary: '#f39982',
+                colorBackground: '#85ceff',
+                colorText: '#f8f8f8',
+                colorTextPlaceholder: '#007bce',
+                colorDanger: '#ff353f',
+                fontFamily: 'Poppins, sans-serif',
+              },
+            },
+          }}
           stripe={stripePromise}>
           <CardMethod />
           <WalletMethod />
