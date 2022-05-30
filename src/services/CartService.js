@@ -94,10 +94,10 @@ class CartService {
       if (i.product === product._id) {
         isInCart = true;
         i.qty = i.qty + qty;
-        i.totalPrice = +(product.price * i.qty).toFixed(2);
+        i.total = +(product.price * i.qty).toFixed(2);
       }
 
-      newSubtotal += i.totalPrice;
+      newSubtotal += i.total;
       newItems.push(i);
     }
 
@@ -108,7 +108,7 @@ class CartService {
         product: product._id,
         imgs: product.imgs,
         qty: qty,
-        totalPrice: +(item.price * qty).toFixed(2),
+        total: +(item.price * qty).toFixed(2),
       });
     }
 
@@ -128,10 +128,10 @@ class CartService {
     for (const i of newCart.items) {
       if (i.product === itemId) {
         i.qty = qty;
-        i.totalPrice = +(i.price * i.qty).toFixed(2);
+        i.total = +(i.price * i.qty).toFixed(2);
       }
 
-      newSubtotal += i.totalPrice;
+      newSubtotal += i.total;
       newItems.push(i);
     }
 
@@ -151,7 +151,7 @@ class CartService {
     for (const i of newCart.items) {
       if (i.product !== itemId) {
         newItems.push(i);
-        newSubtotal += i.totalPrice || i.price * i.qty;
+        newSubtotal += i.total || i.price * i.qty;
       }
     }
 
