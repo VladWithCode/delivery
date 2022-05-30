@@ -9,3 +9,28 @@
     margin-top: 5rem;
   }
 }
+
+.stripe {
+  display: flex;
+  flex-direction: column;
+
+  .card-method {
+    padding: 2rem;
+    color: $color-white;
+    background-color: $color-info;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+
+    .btn {
+      padding: 1rem 4rem;
+      margin: auto;
+      margin-top: 2rem;
+      margin-right: 0;
+      border: 1px solid transparent;
+      border-radius: 1rem;
+      color: $color-white;
+      background-color: $color-success;
+    }
+  }
+}
