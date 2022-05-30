@@ -4,19 +4,25 @@ import OrderContext from '../../context/Order/OrderContext';
 function PaymentMethodSelect() {
   const { setCheckoutStep, setPaymentMethod } = useContext(OrderContext);
 
-  const handleMethodSelect = e => {
-    const { target } = e;
-
-    setPaymentMethod(target.dataset.method);
-    setCheckoutStep('COMPLETE_PAYMENT');
+  const handleMethodSelect = methodType => {
+    switch (methodType) {
+      case 'card':
+        setPaymentMethod(methodType);
+        setCheckoutStep('CARD_PAYMENT');
+        break;
+      case 'cash':
+        console.log('TODO: Implement Cash payments');
+        break;
+      default:
+        return;
+    }
   };
 
   return (
     <div className='card-select'>
       <div
         className='card-select__card card'
-        data-method='cash'
-        onClick={handleMethodSelect}>
+        onClick={() => handleMethodSelect('cash')}>
         <div className='card-select__img'>
           <svg className='card-select__icon'>
             <use href='/svg/sprites.svg#bill'></use>
@@ -26,8 +32,7 @@ function PaymentMethodSelect() {
       </div>
       <div
         className=' card-select__card card'
-        data-method='card'
-        onClick={handleMethodSelect}>
+        onClick={() => handleMethodSelect('card')}>
         <div className='card-select__img'>
           <svg className='card-select__icon'>
             <use href='/svg/sprites.svg#credit_card'></use>
