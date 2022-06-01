@@ -1,20 +1,25 @@
 const Sale = require('../models/Sale');
 
 class SaleService {
-  createSale({ customer, address, zip, cart, payment }) {
+  createSale(saleData) {
     const sale = new Sale({
-      customer,
-      address,
-      zip,
-      items: cart.items,
-      payment,
+      ...saleData,
+      customer: {
+        name: saleData.customer.name,
+        phone: saleData.customer.phone,
+      },
+      address: saleData.address,
     });
 
     return sale;
   }
 
+  async getSale(id) {
+    return await Sale.findOne({ _id: id }).lean();
+  }
+
   async saveSale(sale) {
-    return await sale.save().lean();
+    return await sale.save();
   }
 }
 
