@@ -1,6 +1,4 @@
 .checkout {
-  height: 100%;
-
   &__form {
     color: $color-white;
     background-color: $color-gray-d;
@@ -14,23 +12,23 @@
   display: flex;
   flex-direction: column;
 
+  .load {
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 1rem solid transparent;
+    border-bottom-color: $color-gray-d;
+    animation-name: spinner;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
   .card-method {
-    padding: 2rem;
-    color: $color-white;
-    background-color: $color-info;
     display: flex;
+    padding-left: 2rem;
+    padding-right: 2rem;
     flex-direction: column;
     border-radius: 1rem;
-
-    .btn {
-      padding: 1rem 4rem;
-      margin: auto;
-      margin-top: 2rem;
-      margin-right: 0;
-      border: 1px solid transparent;
-      border-radius: 1rem;
-      color: $color-white;
-      background-color: $color-success;
-    }
   }
 }
