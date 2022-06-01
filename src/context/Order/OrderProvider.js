@@ -25,7 +25,7 @@ function OrderProvider({ children }) {
       stripeClientSecret: '',
     },
     lastOrder: null,
-    checkoutStep: 'CUSTOMER_INFO', // CUSTOMER_INFO | PAYMENT_METHOD_SELECTION | COMPLETE_PAYMENT | ORDER_DETAILS
+    checkoutStep: 'CUSTOMER_INFO', // CONFIRM_ORDER | CUSTOMER_INFO | PAYMENT_METHOD_SELECTION | COMPLETE_PAYMENT | ORDER_DETAILS
   };
 
   const [state, dispatch] = useReducer(OrderReducer, initialState);
@@ -60,7 +60,7 @@ function OrderProvider({ children }) {
 
   /**
    *
-   * @param {'CUSTOMER_INFO' | 'PAYMENT_METHOD_SELECTION' | 'COMPLETE_PAYMENT' | 'ORDER_DETAILS'} step -
+   * @param {'CONFIRM_ORDER' | 'CUSTOMER_INFO' | 'PAYMENT_METHOD_SELECTION' | 'COMPLETE_PAYMENT' | 'ORDER_DETAILS'} step -
    */
   const setCheckoutStep = step => {
     dispatch({ type: SET_CHECKOUT_STEP, payload: step });
