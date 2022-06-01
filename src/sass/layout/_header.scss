@@ -1,77 +1,58 @@
 .header {
-  --font-size: 1.4rem;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
   display: flex;
-  color: $color-black;
-  font-size: var(--font-size);
-  height: 5.72rem;
-  transition: 1s;
-  z-index: 10;
-  box-shadow: 0 3px 3px -3px rgba($color-secondary-d, 25%);
+  height: 5rem;
+  padding: 0 2rem;
+  background-color: $color-gray-d;
+  color: $color-white;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 
-  &--alt {
-    background-color: $color-primary;
-  }
-
-  &.stick {
-    --font-size: 1rem;
-
-    background-color: $color-primary;
-    z-index: 20;
-    color: $color-white;
-  }
-
-  &__left,
-  &__right {
-    flex: 1;
-  }
-
-  &__left,
-  &__center,
-  &__right {
-    display: flex;
-    align-items: center;
-  }
-
-  &__left {
-    margin-left: 5rem;
-    justify-content: flex-start;
-  }
-
-  &__center {
-    line-height: 24px;
-  }
-
-  &__right {
-    --icon-h: 1.6rem;
-    --icon-w: 1.6rem;
-
-    margin-right: 5rem;
-    justify-content: flex-end;
-    column-gap: 0.6rem;
-  }
-
-  &__button {
-    height: 100%;
-    fill: currentColor;
-    display: flex;
-  }
-
-  &__icon {
-    cursor: pointer;
-    height: var(--icon-h, 1.65rem);
-    width: var(--icon-w, 1.65rem);
+  &__heading {
     margin: auto;
+    margin-left: 0;
+    font-size: 2rem;
   }
 
-  &__logo {
-    fill: currentColor;
-    aspect-ratio: 2 / 1;
-    width: 8rem;
+  &__toggler {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 4px;
+    width: 4rem;
+    height: 4rem;
+    margin: auto;
+    margin-right: 0;
+    z-index: $z-toast;
+    border-radius: 50%;
+    background-color: $color-gray-d;
+
+    &.active {
+      .bar {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        &:first-child {
+          display: block;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:last-child {
+          display: block;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+      }
+    }
+
+    .bar {
+      display: block;
+      margin: 0 auto;
+      height: 3px;
+      width: 2rem;
+      background-color: currentColor;
+      transition: 0.35s;
+    }
   }
 }

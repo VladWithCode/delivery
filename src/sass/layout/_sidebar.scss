@@ -1,0 +1,56 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100vw;
+  height: 100vh;
+  z-index: $z-fixed;
+  transition: right 0.2s;
+
+  &.active {
+    right: 0;
+  }
+
+  &__drop-shadow {
+    background-color: $color-white;
+    width: 100%;
+    height: 100%;
+    opacity: 0.35;
+    z-index: $z-below;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 85%;
+    height: 100vh;
+    background-color: $color-white;
+    box-shadow: -5px 0 10px -5px rgba($color-gray-d, 35%);
+    top: 0;
+    right: 0;
+    z-index: $z-fixed;
+  }
+
+  &__header {
+    height: 12rem;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  &__logo {
+    display: block;
+    max-height: 100%;
+    width: auto;
+    margin: auto;
+  }
+
+  &__main {
+    width: 100%;
+    margin: auto;
+  }
+
+  &__footer {
+    height: 12rem;
+  }
+}
