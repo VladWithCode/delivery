@@ -1,9 +1,9 @@
 .spinner {
-  width: var(--sp-width, 5rem);
-  height: var(--sp-height, 5rem);
+  width: var(--sp-sz, 5rem);
+  height: var(--sp-sz, 5rem);
   border-radius: 50%;
-  border: var(--sp-border-wd, 1rem) solid transparent;
-  border-bottom-color: var(--sp-border-c, $color-gray-d);
+  border: var(--sp-thickness, 1rem) solid rgba($color-gray-l, 30%);
+  border-bottom-color: var(--sp-color, $color-gray-d);
   margin: auto;
   animation-name: spinner;
   animation-duration: 1s;

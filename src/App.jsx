@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Layout/Header';
+import Sidebar from './components/Layout/Sidebar';
 import Toast from './components/Toast/Toast';
 import CartContext from './context/Cart/CartContext';
 import CartService from './services/CartService';
@@ -26,6 +27,7 @@ function App() {
     <>
       <Header />
       <Outlet />
+      <Sidebar />
       {/* <Footer /> */}
       <Toast />
     </>

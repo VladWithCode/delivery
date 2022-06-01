@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToastContext from '../../context/Toast/ToastContext';
 import ShopService from '../../services/ShopService';
 import Listing from './Listing';
-import Sidebar from './Sidebar';
 
 function Menu() {
   const { displayErrorToast } = useContext(ToastContext);
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
   const [initializing, setInitializing] = useState(true);
   const [products, setProducts] = useState([]);
   const [options, setOptions] = useState({
@@ -39,12 +37,6 @@ function Menu() {
     <div className='menu container'>
       <h1 className='menu__title heading'>Pollo</h1>
       <h5 className='menu__subtitle subtitle'>¿Qué se te antoja comer hoy?</h5>
-      <span
-        className='menu__toggler'
-        onClick={() => setIsSidebarActive(!isSidebarActive)}>
-        {isSidebarActive ? <>&times;</> : 'MENU'}
-      </span>
-      <Sidebar state={{ isSidebarActive, setIsSidebarActive }} />
       <Listing initializing={initializing} products={products} />
     </div>
   );

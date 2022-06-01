@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { CartProvider } from './context/Cart/CartProvider';
 import { ModalProvider } from './context/Modal/ModalProvider';
 import OrderProvider from './context/Order/OrderProvider';
+import { SidebarProvider } from './context/Sidebar/SidebarProvider';
 import { ToastProvider } from './context/Toast/ToastProvider';
 import AppRouter from './routers/AppRouter';
 import './sass/main.scss';
@@ -15,7 +16,9 @@ root.render(
       <ModalProvider>
         <CartProvider>
           <OrderProvider>
-            <AppRouter />
+            <SidebarProvider>
+              <AppRouter />
+            </SidebarProvider>
           </OrderProvider>
         </CartProvider>
       </ModalProvider>
