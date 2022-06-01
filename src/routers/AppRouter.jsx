@@ -4,6 +4,7 @@ import App from '../App';
 import Checkout from '../components/Checkout/Checkout';
 import Home from '../components/Home/Home';
 import NotFound from '../components/NotFound/NotFound';
+import Order from '../components/Order/Order';
 
 function AppRouter() {
   return (
@@ -12,6 +13,7 @@ function AppRouter() {
         <Route path='/' element={<App />}>
           <Route index element={<Home />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/orden/:id' element={<Order />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
