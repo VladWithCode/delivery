@@ -3,14 +3,14 @@ const { model, Schema, SchemaTypes } = require('mongoose');
 const SaleSchema = new Schema({
   customer: new Schema(
     {
-      id: SchemaTypes.ObjectId,
+      id: String,
       name: String,
       phone: String,
       email: String,
     },
     { _id: false }
   ),
-  shippingAddress: {
+  address: {
     type: String,
     required: true,
   },
