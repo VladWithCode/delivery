@@ -54,12 +54,12 @@ ctrl.saveSale = async (req, res, next) => {
       };
     }),
     payment: {
-      ...payment,
+      method: chargeData.payment_method_details.type,
       isPayed: paymentIntent.status === 'succeeded',
-      paidAt: Date.now(),
+      payedOn: Date.now(),
       subtotal: totals.total,
-      shipment: cart.shipment || 0,
       tax: cart.tax || 0,
+      shipment: cart.shipment || 0,
       total: chargeData.amount,
     },
     stripeData: {
