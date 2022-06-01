@@ -5,13 +5,13 @@ function PaymentMethodSelect() {
   const { setCheckoutStep, setPaymentMethod } = useContext(OrderContext);
 
   const handleMethodSelect = methodType => {
+    setPaymentMethod(methodType);
     switch (methodType) {
       case 'card':
-        setPaymentMethod(methodType);
         setCheckoutStep('CARD_PAYMENT');
         break;
       case 'cash':
-        console.log('TODO: Implement Cash payments');
+        setCheckoutStep('CASH_PAYMENT');
         break;
       default:
         return;
@@ -21,7 +21,7 @@ function PaymentMethodSelect() {
   return (
     <div className='card-select'>
       <div
-        className='card-select__card card'
+        className='card-select__card card card--dark'
         onClick={() => handleMethodSelect('cash')}>
         <div className='card-select__img'>
           <svg className='card-select__icon'>
@@ -39,6 +39,13 @@ function PaymentMethodSelect() {
           </svg>
         </div>
         <p className='card-select__title'>Tarjeta de Credito/Debito</p>
+      </div>
+      <div className='card__row'>
+        <button
+          className='btn btn--danger btn--left'
+          onClick={() => setCheckoutStep('CONFIRM_ORDER')}>
+          Regresar
+        </button>
       </div>
     </div>
   );
