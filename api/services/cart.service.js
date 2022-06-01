@@ -7,7 +7,7 @@ class CartService {
     const tax = cart.tax;
     const shipment = cart.shipment;
 
-    const itemsTotals = {};
+    const itemTotals = {};
     let total = tax + shipment;
     let subtotal = 0;
 
@@ -16,10 +16,10 @@ class CartService {
       total += totalPrice;
       subtotal += totalPrice;
 
-      itemsTotals[i.sku] = totalPrice;
+      itemTotals[i.sku] = totalPrice;
     }
 
-    return { total, subtotal, itemsTotals };
+    return { total, subtotal, itemTotals };
   }
 
   addToCart(cart, product, qty) {
