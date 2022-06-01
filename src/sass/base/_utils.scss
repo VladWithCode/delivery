@@ -112,6 +112,16 @@
   }
 }
 
+.fd {
+  &-col {
+    flex-direction: column;
+  }
+
+  &-row {
+    flex-direction: row;
+  }
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
