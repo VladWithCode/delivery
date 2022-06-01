@@ -46,7 +46,7 @@ function Modal() {
   return (
     <div className={'modal'.concat(isActive ? ' active' : '')}>
       <span className='modal__dropdown' onClick={handleModalClose}></span>
-      <div className='modal__card card'>
+      <div className='modal__card card card--dark'>
         <span className='card__close' onClick={handleModalClose}>
           &times;
         </span>
@@ -56,9 +56,11 @@ function Modal() {
           className='card__img m-0'
         />
         <h4 className='card__title fs-2 fw-500'>{info.name}</h4>
-        <p className='card__description fs-1'>{info.description}</p>
-        <p className='card__price fs-2'>${priceToString(info.price)}</p>
-        <div className='card__controls mt-2'>
+        <p className='card__concept'>{info.description}</p>
+        <div className='card__row'>
+          <div className='card__value fs-3'>${priceToString(info.price)}</div>
+        </div>
+        <div className='card__controls mt-1'>
           <div className='card__qty'>
             <span className='minus' onClick={handleMinusClick}>
               -
@@ -68,7 +70,9 @@ function Modal() {
               +
             </span>
           </div>
-          <button className='card__btn mr-0' onClick={handleAddToCartClick}>
+          <button
+            className='btn btn--info btn--right'
+            onClick={handleAddToCartClick}>
             Añadir al Carrito
           </button>
         </div>
