@@ -1,0 +1,100 @@
+.btn {
+  font-size: var(--btn-fz, 1.6rem);
+  background-color: $color-gray-d;
+  border: 1px solid $color-gray-d;
+  border-radius: 1rem;
+  color: $color-white;
+  padding: 1rem 2rem;
+  margin: auto;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: $color-gray-d;
+    border-color: currentColor;
+    background-color: $color-white;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &--submit {
+    background-color: $color-success;
+    border-color: $color-success;
+
+    &:hover,
+    &:active {
+      color: $color-success !important;
+    }
+  }
+
+  &--danger {
+    background-color: $color-error;
+    border-color: $color-error;
+
+    &:hover,
+    &:active {
+      color: $color-error !important;
+    }
+  }
+
+  &--info {
+    background-color: $color-info;
+    border-color: $color-info;
+
+    &:hover,
+    &:active {
+      color: $color-info !important;
+    }
+  }
+
+  &--warning {
+    background-color: $color-warning;
+    border-color: $color-warning;
+
+    &:hover,
+    &:active {
+      color: $color-warning !important;
+    }
+  }
+
+  &--left {
+    margin: auto;
+    margin-left: 0;
+  }
+
+  &--right {
+    margin: auto;
+    margin-right: 0;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &.loading {
+    opacity: 0.75;
+    pointer-events: none;
+
+    .btn-text {
+      display: none;
+    }
+    .btn-spinner {
+      display: block;
+    }
+  }
+
+  .btn-spinner {
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid transparent;
+    border-bottom-color: $color-white;
+    border-radius: 50%;
+    animation-name: spinner;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+}
