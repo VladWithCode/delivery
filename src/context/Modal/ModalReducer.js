@@ -12,9 +12,7 @@ const ModalReducer = (state, action) => {
     case SET_MODAL_INFO:
       return {
         ...state,
-        info: {
-          ...payload,
-        },
+        info: payload,
       };
 
     default:
