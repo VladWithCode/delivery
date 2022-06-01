@@ -11,7 +11,7 @@ class StripeService {
   }
 
   async retrivePaymentIntent(id) {
-    return await stripe.paymentIntents.retrive(id);
+    return await stripe.paymentIntents.retrieve(id);
   }
 }
 
