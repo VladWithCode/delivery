@@ -16,7 +16,7 @@ function Item({ product }) {
   };
 
   return (
-    <li className='menu__item card' onClick={handleItemClick}>
+    <li className='menu__item card card--dark' onClick={handleItemClick}>
       <img
         src={SERVER_URL.concat(product.imgs[0]) || '/img/pollo.png'}
         alt='imagen de producto'
