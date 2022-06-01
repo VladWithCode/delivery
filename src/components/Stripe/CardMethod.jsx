@@ -10,11 +10,11 @@ import ToastContext from '../../context/Toast/ToastContext';
 import StripeService from '../../services/StripeService';
 
 function CardMethod() {
-  const { paymentInfo, setStripeIntentId, setStripeClientSecret } =
+  const { customerInfo, paymentInfo, setStripeIntentId, setCheckoutStep } =
     useContext(OrderContext);
   const { displaySuccessToast, displayErrorToast, displayInfoToast } =
     useContext(ToastContext);
-  const { resetCart } = useContext(CartContext);
+  const { resetCart, subtotal, tax, shipment, items } = useContext(CartContext);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -89,7 +89,10 @@ function CardMethod() {
       return;
     }
 
-    const res = await StripeService.saveSaleToDB(stripeIntentId);
+    const res = await StripeService.saveSaleToDB(stripeIntentId, {
+      customer: customerInfo,
+      cart: { shipment, tax, subtotal, items },
+    });
 
     setLoading(false);
 
@@ -106,17 +109,26 @@ function CardMethod() {
   };
 
   return (
-    <form className='card-method' onSubmit={handleSubmit}>
+    <form className='checkout__form card-method' onSubmit={handleSubmit}>
       <PaymentElement />
-      <button
-        type='submit'
-        className={'btn btn--submit card-method__btn'.concat(
-          loading ? ' loading' : ''
-        )}
-        disabled={disableButton}>
-        <span className='btn-text'>Pagar</span>
-        <span className='btn-spinner'></span>
-      </button>
+      <div className='card__row mt-2'>
+        <button
+          type='button'
+          className='btn btn--danger btn--left'
+          onClick={() => setCheckoutStep('PAYMENT_METHOD_SELECTION')}
+          disabled={loading}>
+          Regresar
+        </button>
+        <button
+          type='submit'
+          className={'btn btn--submit btn--right card-method__btn'.concat(
+            loading ? ' loading' : ''
+          )}
+          disabled={disableButton}>
+          <span className='btn-text'>Pagar</span>
+          <span className='btn-spinner'></span>
+        </button>
+      </div>
     </form>
   );
 }
