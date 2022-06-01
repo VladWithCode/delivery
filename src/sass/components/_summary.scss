@@ -5,7 +5,7 @@
   right: 0;
   width: 100vw;
   height: 35rem;
-  background-color: $color-gray;
+  background-color: $color-gray-d;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
   box-shadow: 0 -3px 10px -3px rgba($color-black, 0.35);
@@ -73,9 +73,9 @@
   &__item {
     flex: 1 0 85%;
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 30% 50% 20%;
     grid-template-rows: repeat(2, 50%);
-    background-color: $color-gray-l;
+    background-color: $color-gray;
     border-radius: 2rem;
   }
 
@@ -84,6 +84,7 @@
     grid-column: 1 / 2;
     grid-row: 1 / -1;
     align-self: center;
+    padding-left: 1rem;
   }
 
   &__name {
