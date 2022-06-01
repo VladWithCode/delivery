@@ -4,7 +4,7 @@
   }
 
   .fs-#{$i} {
-    font-size: 2.8rem * calc($i / 2) !important;
+    font-size: 2.8rem * calc(2 / $i) !important;
   }
 }
 
@@ -47,4 +47,14 @@
   font-weight: 400;
   color: $color-gray-l;
   margin-bottom: 1rem;
+}
+
+.text {
+  &-center {
+    text-align: center !important;
+  }
+
+  &-mute {
+    color: $color-gray-l !important;
+  }
 }
