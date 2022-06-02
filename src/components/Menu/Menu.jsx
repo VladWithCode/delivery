@@ -27,7 +27,11 @@ function Menu() {
         return;
       }
 
-      setProducts(res.products?.length > 0 ? res.products : []);
+      const sortedProducts = res.products?.sort((a, b) => {
+        return b.price - a.price;
+      });
+
+      setProducts(sortedProducts.length > 0 ? res.products : []);
     };
 
     fetchProducts();
