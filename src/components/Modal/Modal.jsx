@@ -46,7 +46,7 @@ function Modal() {
   return (
     <div className={'modal'.concat(isActive ? ' active' : '')}>
       <span className='modal__dropdown' onClick={handleModalClose}></span>
-      <div className='modal__card card card--dark'>
+      <div className='modal__card card card--dark card--noshadow'>
         <span className='card__close' onClick={handleModalClose}>
           &times;
         </span>
