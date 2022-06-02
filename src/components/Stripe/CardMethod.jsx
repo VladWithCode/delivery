@@ -7,6 +7,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import CartContext from '../../context/Cart/CartContext';
 import OrderContext from '../../context/Order/OrderContext';
 import ToastContext from '../../context/Toast/ToastContext';
+import CartService from '../../services/CartService';
 import StripeService from '../../services/StripeService';
 
 function CardMethod() {
@@ -103,6 +104,10 @@ function CardMethod() {
       );
       return;
     }
+
+    const resetResponse = await CartService.resetCart();
+
+    if (resetResponse.status !== 'OK') console.error(res.error || res.message);
 
     displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
     resetCart();
