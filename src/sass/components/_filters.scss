@@ -1,2 +1,143 @@
+.filter {
+  --closed-height: 6rem;
+  --active-height: 35rem;
+
+  position: relative;
+  height: var(--closed-height);
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.close {
+    animation-name: filterClose;
+    animation-duration: 0.6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  &.active {
+    animation-name: filterOpen;
+    animation-duration: 0.6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  &__title-out,
+  &__title-in {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__title-out {
+    font-size: 2rem;
+    opacity: 1;
+    transition: opacity 0.2s, transform 0.55s;
+  }
+
+  &.active &__title-out {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  &__title-in {
+    font-size: 1.15rem;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.55s;
+  }
+
+  &.active &__title-in {
+    opacity: 1;
+    transform: translateY(calc(-100% - 1.15rem));
+  }
+
+  &__toggler {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    transform: translate(-50%, -50%) rotate(90deg);
+    fill: currentColor;
+    transition: transform 0.35s, top 0.1s;
+  }
+
+  &.active &__toggler {
+    top: 2.5rem;
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  &__toggle-arrow {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__header {
+    height: 2.5rem;
+  }
+
+  &__content,
+  &__controls {
+    opacity: 0;
+    transition: opacity 0.45s;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &.active &__content,
+  &.active &__controls {
+    opacity: 1;
+  }
+
+  &__controls {
+    display: flex;
+    padding: 0.5rem 2rem;
+  }
+
+  &__control {
+    margin: 0 auto;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid;
+    user-select: none;
+
+    &--blue {
+      background-color: $color-info !important;
+      border-color: $color-info;
+      color: $color-white !important;
+
+      &:hover,
+      &:active {
+        background-color: lighten($color-info, 40%) !important;
+        color: $color-info !important;
+        border-color: currentColor;
+      }
+    }
+
+    &--green {
+      background-color: $color-success !important;
+      border-color: $color-success;
+      color: $color-white !important;
+
+      &:hover,
+      &:active {
+        background-color: lighten($color-success, 35%) !important;
+        color: $color-success !important;
+        border-color: currentColor;
+      }
+    }
+  }
+}
+
 .filters {
+  height: 100%;
+  width: 90%;
+  margin: auto;
+  overflow-y: auto;
 }

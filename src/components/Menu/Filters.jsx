@@ -1,10 +1,13 @@
 import React from 'react';
+import CtgFilters from './CtgFilters';
+import PriceFilters from './PriceFilters';
 
 function Filters() {
   return (
-    <ul className='filters'>
-      <div className='card card--dark card--noshadow'></div>
-    </ul>
+    <div className='filters'>
+      <CtgFilters />
+      <PriceFilters />
+    </div>
   );
 }
 

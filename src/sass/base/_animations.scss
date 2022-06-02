@@ -72,3 +72,21 @@
     opacity: 0;
   }
 }
+
+@keyframes filterOpen {
+  0% {
+    height: var(--closed-height, 6rem);
+  }
+  100% {
+    height: var(--active-height, 25rem);
+  }
+}
+
+@keyframes filterClose {
+  0% {
+    height: var(--active-height, 25rem);
+  }
+  100% {
+    height: var(--closed-height, 6rem);
+  }
+}
