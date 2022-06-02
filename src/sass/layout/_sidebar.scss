@@ -3,7 +3,7 @@
   top: 0;
   right: -100%;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   z-index: $z-fixed;
   transition: right 0.2s;
 
@@ -30,12 +30,14 @@
     top: 0;
     right: 0;
     z-index: $z-fixed;
+    background-color: $color-white;
   }
 
   &__header {
     height: 12rem;
     width: 100%;
     padding: 1rem 0;
+    background-color: $color-gray-d;
   }
 
   &__logo {
@@ -46,11 +48,15 @@
   }
 
   &__main {
+    margin: auto 0;
+    max-height: calc(100% - 22rem);
     width: 100%;
-    margin: auto;
+    padding: 2rem 0;
   }
 
   &__footer {
-    height: 12rem;
+    height: 10rem;
+    background-color: $color-gray-d;
+    color: $color-gray-l;
   }
 }
