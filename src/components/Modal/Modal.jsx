@@ -57,7 +57,7 @@ function Modal() {
         />
         <h4 className='card__title fs-2 fw-500'>{info.name}</h4>
         <p className='card__concept'>{info.description}</p>
-        <div className='card__row'>
+        <div className='card__row mt-1'>
           <div className='card__value fs-3'>${priceToString(info.price)}</div>
         </div>
         <div className='card__controls mt-1'>
