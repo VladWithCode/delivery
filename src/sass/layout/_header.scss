@@ -1,4 +1,9 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-fixed;
   display: flex;
   height: 5rem;
   padding: 0 2rem;
@@ -14,18 +19,20 @@
   }
 
   &__toggler {
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
     row-gap: 4px;
     width: 4rem;
     height: 4rem;
-    margin: auto;
-    margin-right: 0;
+    top: 5px;
+    right: 16px;
     z-index: $z-toast;
     border-radius: 50%;
     background-color: $color-gray-d;
+    color: $color-white;
+    transform-origin: center;
 
     &.active {
       .bar {
