@@ -1,6 +1,13 @@
 import makeServerRequest from '../utils/makeServerRequest';
 
 class CartService {
+  #initialCart = {
+    subtotal: 0,
+    tax: 0,
+    shipment: 0,
+    total: 0,
+    items: [],
+  };
   useLocalCart = false;
 
   // Service Methods
@@ -11,13 +18,7 @@ class CartService {
       let cart = this.#getLocalCart();
 
       if (!cart) {
-        cart = {
-          subtotal: 0,
-          tax: 0,
-          shipment: 0,
-          total: 0,
-          items: [],
-        };
+        cart = this.#initialCart;
 
         localStorage.setItem('cart', JSON.stringify(cart));
       }
@@ -58,6 +59,14 @@ class CartService {
       return this.#removeFromLocalCart(itemId);
     } else {
       return await this.#removeFromDBCart(itemId);
+    }
+  }
+
+  async resetCart() {
+    if (this.useLocalCart) {
+      return this.#resetLocalCart();
+    } else {
+      return await this.#resetDBCart();
     }
   }
 
@@ -161,6 +170,12 @@ class CartService {
     return newCart;
   }
 
+  #resetLocalCart() {
+    this.#updateLocalCart(this.#initialCart);
+
+    return this.#initialCart;
+  }
+
   // DB Cart Methods
   async #getDBCart() {
     const res = await makeServerRequest('/public/cart', {
@@ -246,6 +261,20 @@ class CartService {
       method: 'DELETE',
       body: { itemId },
       headers: { 'Content-Type': 'application/json' },
+      useAuth: true,
+    });
+
+    if (res.status !== 'OK') {
+      console.error(res.error || res.message);
+      throw new Error(res.message || res.error.message);
+    }
+
+    return res.cart;
+  }
+
+  async #resetDBCart() {
+    const res = await makeServerRequest('/public/cart/reset', {
+      method: 'PUT',
       useAuth: true,
     });
 
