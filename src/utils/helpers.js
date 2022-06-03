@@ -10,3 +10,16 @@ export const isEmptyObject = o => {
 
   return false;
 };
+
+export const recursiveBinarySearch = (list = [], target) => {
+  if (list.length === 0) return false;
+
+  let mid = Math.floor(list.length / 2);
+
+  if (list[mid] === target) return true;
+
+  if (list[mid] < target)
+    return recursiveBinarySearch(list.slice(mid + 1), target);
+
+  return recursiveBinarySearch(list.slice(0, mid), target);
+};
