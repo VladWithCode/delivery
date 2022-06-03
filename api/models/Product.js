@@ -29,10 +29,11 @@ const ProductSchema = new Schema({
     },
   },
   imgs: { type: [String] },
-  categories: {
+  /* categories: {
     type: [String],
     set: v => (Array.isArray(v) ? v : v.split(',').map(c => c.trim())),
-  },
+  }, */
+  category: String,
   tags: {
     type: [String],
     set: v => (Array.isArray(v) ? v : v.split(',').map(c => c.trim())),
