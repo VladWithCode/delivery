@@ -24,6 +24,7 @@
     flex-direction: column;
     position: absolute;
     width: 85%;
+    max-width: 35rem;
     height: 100vh;
     background-color: $color-white;
     box-shadow: -5px 0 10px -5px rgba($color-gray-d, 35%);
@@ -34,28 +35,36 @@
   }
 
   &__header {
-    height: 12rem;
+    display: flex;
+    height: 8rem;
     width: 100%;
     padding: 1rem 0;
     background-color: $color-gray-d;
+    color: $color-white;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    margin: auto;
+    margin-left: 2rem;
   }
 
   &__logo {
     display: block;
     max-height: 100%;
     width: auto;
-    margin: auto;
+    margin-left: 2rem;
   }
 
   &__main {
     margin: auto 0;
-    max-height: calc(100% - 22rem);
+    max-height: calc(100% - 20rem);
     width: 100%;
     padding: 2rem 0;
   }
 
   &__footer {
-    height: 10rem;
+    height: 12rem;
     background-color: $color-gray-d;
     color: $color-gray-l;
   }
