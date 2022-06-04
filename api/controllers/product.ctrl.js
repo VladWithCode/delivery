@@ -61,6 +61,26 @@ ctrl.createProduct = async (req, res, next) => {
 };
 
 ctrl.getProducts = async (req, res, next) => {
+  const [categories, products] = await Promise.all([
+    Product.aggregate([{ $group: { _id: '$category' } }]),
+    Product.find({ stock: { $gt: 0 } })
+      .sort({ price: -1 })
+      .lean(),
+  ]);
+
+  const hashedProducts = {};
+
+  for (let { _id } of categories) {
+    hashedProducts[_id] = products.filter(p => p.category === _id);
+  }
+
+  return res.json({
+    status: 'OK',
+    products: hashedProducts,
+  });
+};
+
+ctrl.getRawProducts = async (req, res, next) => {
   const { ctg, size, limit, skip } = req.query;
 
   const queryFilter = {};
