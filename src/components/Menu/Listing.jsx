@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import MenuContext from '../../context/Menu/MenuContext';
 import Item from './Item';
 
-function Listing({ products, initializing }) {
+function Listing({ initializing, ctg }) {
+  const { prices, getCategoryProducts } = useContext(MenuContext);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const rawProducts = getCategoryProducts(ctg);
+    const visibleProducts = [];
+
+    rawProducts.forEach(product => {
+      if (
+        product.price > prices.min ||
+        (prices.max !== -1 && product.price < prices.max)
+      )
+        visibleProducts.push(product);
+    });
+
+    setProducts(visibleProducts);
+  }, [prices.min, prices.max]);
+
   return (
     <ul className='menu__listing'>
       {initializing ? (
