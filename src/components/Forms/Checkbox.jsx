@@ -1,8 +1,15 @@
 import React from 'react';
 
-function Checkbox({ isChecked, onChange, name, label, classNames = {} }) {
+function Checkbox({
+  isChecked,
+  onChange,
+  name,
+  label,
+  classNames = {},
+  value,
+}) {
   const handleChange = ({ target }) => {
-    onChange(target.name, target.checked);
+    onChange(target.name, target.checked, value);
   };
 
   return (
