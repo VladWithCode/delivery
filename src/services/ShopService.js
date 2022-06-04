@@ -1,7 +1,7 @@
 import makeServerRequest from '../utils/makeServerRequest';
 
 class ShopService {
-  async fetchProducts({ ctg, size, limit = 8, skip = 0 }) {
+  async fetchProducts({ ctg, size, limit = 10, skip = 0 } = {}) {
     const params = new URLSearchParams();
 
     if (ctg?.length > 0) params.append('ctg', ctg);
