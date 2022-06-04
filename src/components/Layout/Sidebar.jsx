@@ -25,7 +25,8 @@ function Sidebar() {
         onClick={() => setIsActive(false)}></div>
       <div className='sidebar__content'>
         <div className='sidebar__header'>
-          <img src='/img/pollo.png' className='sidebar__logo' />
+          {/* <img src='/img/pollo.png' className='sidebar__logo' /> */}
+          <h2 className='sidebar__heading'>Su Taco</h2>
         </div>
         {!contentElement ? (
           <div className='spinner' style={{ '--sp-thickness': '7px' }}></div>
