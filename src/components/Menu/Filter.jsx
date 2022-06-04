@@ -34,7 +34,7 @@ function Filter({ children, title, handleClean, handleApply }) {
         <p className='filter__title-in'>{title}</p>
       </div>
       <div className='filter__content'>{children}</div>
-      <div className='filter__controls'>
+      {/* <div className='filter__controls'>
         <button
           className='filter__control filter__control--blue'
           onClick={handleClean}>
@@ -45,7 +45,7 @@ function Filter({ children, title, handleClean, handleApply }) {
           onClick={handleApply}>
           Aplicar
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
