@@ -8,7 +8,7 @@ import SidebarContext from './context/Sidebar/SidebarContext';
 import CartService from './services/CartService';
 
 function App() {
-  const { isActive, setIsActive } = useContext(SidebarContext);
+  const { isActive, setIsActive, contentId } = useContext(SidebarContext);
   const { setCart } = useContext(CartContext);
   const [cartInitialized, setCartInitialized] = useState(false);
 
@@ -32,9 +32,9 @@ function App() {
       <div
         className={'header__toggler'.concat(isActive ? ' active' : '')}
         onClick={() => setIsActive(!isActive)}>
-        <span className='bar'></span>
-        <span className='bar'></span>
-        <span className='bar'></span>
+        <span className='text'>FILTROS</span>
+        <span className='bar bar--1'></span>
+        <span className='bar bar--2'></span>
       </div>
 
       <Outlet />
