@@ -9,4 +9,9 @@
   &--f-row {
     flex-direction: row;
   }
+
+  &--grid {
+    display: grid;
+    flex-direction: initial;
+  }
 }
