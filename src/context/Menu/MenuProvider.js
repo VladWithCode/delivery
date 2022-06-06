@@ -1,13 +1,7 @@
-import { useEffect, useReducer } from 'react';
-import { recursiveBinarySearch } from '../../utils/helpers';
+import { useReducer } from 'react';
 import MenuContext from './MenuContext';
 import MenuReducer from './MenuReducer';
-import {
-  SET_ACTIVE_CTGS,
-  SET_ACTIVE_PRICE_RANGES,
-  SET_MENU,
-  SET_RAW_PRODUCTS,
-} from './types';
+import { SET_ACTIVE_CTGS, SET_ACTIVE_PRICE_RANGES, SET_MENU } from './types';
 
 export const MenuProvider = ({ children }) => {
   const initialState = {

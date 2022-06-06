@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SidebarContext from '../../context/Sidebar/SidebarContext';
 import Filters from '../Menu/Filters';
 import Footer from './Footer';

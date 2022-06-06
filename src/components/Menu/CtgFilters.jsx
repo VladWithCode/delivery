@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import MenuContext from '../../context/Menu/MenuContext';
-import Checkbox from '../Forms/Checkbox';
 import CtgCheckbox from './CtgCheckbox';
 import Filter from './Filter';
 
