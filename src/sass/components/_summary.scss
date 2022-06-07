@@ -16,10 +16,13 @@
   display: grid;
   grid-template-rows: 5rem 15rem 5rem 10rem;
   transform: translate3d(0, calc(35rem - 5rem), 0);
-  transition: 0.35s;
+  transition: 0.35s, border-top-left-radius 0.5s, border-top-right-radius 0.5s;
 
   &.active {
     transform: translate3d(0, 0, 0);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0px -1rem 8px 7px rgba($color-gray-l, 85%);
 
     .summary__title {
       transform: translateY(-100%);
