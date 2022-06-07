@@ -4,6 +4,7 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartContext from '../../context/Cart/CartContext';
 import OrderContext from '../../context/Order/OrderContext';
 import ToastContext from '../../context/Toast/ToastContext';
@@ -16,6 +17,7 @@ function CardMethod() {
   const { displaySuccessToast, displayErrorToast, displayInfoToast } =
     useContext(ToastContext);
   const { resetCart, subtotal, tax, shipment, items } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -109,8 +111,9 @@ function CardMethod() {
 
     if (resetResponse.status !== 'OK') console.error(res.error || res.message);
 
-    displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
     resetCart();
+    displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
+    navigate('/orden/' + res.sale._id);
   };
 
   return (
