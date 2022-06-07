@@ -6,6 +6,12 @@ const saleRoutes = require('./public/sale.routes');
 
 const router = Router();
 
+router.use((req, _, next) => {
+  req.isPublicRequest = true;
+
+  return next();
+});
+
 router.use('/products', productRoutes);
 
 router.use('/stripe', stripeRoutes);
