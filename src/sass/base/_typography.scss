@@ -50,11 +50,43 @@
 }
 
 .text {
+  &-left {
+    text-align: left !important;
+  }
+
+  &-right {
+    text-align: right !important;
+  }
+
   &-center {
     text-align: center !important;
   }
 
   &-mute {
     color: $color-gray-l !important;
+  }
+
+  &-primary {
+    color: $color-primary !important;
+  }
+
+  &-secondary {
+    color: $color-secondary !important;
+  }
+
+  &-success {
+    color: $color-success !important;
+  }
+
+  &-info {
+    color: $color-info !important;
+  }
+
+  &-danger {
+    color: $color-error !important;
+  }
+
+  &-warning {
+    color: $color-warning !important;
   }
 }
