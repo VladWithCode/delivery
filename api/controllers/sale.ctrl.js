@@ -16,6 +16,15 @@ ctrl.getSale = async (req, res, next) => {
       message: 'No se encontro venta con el id proporcionado',
     });
 
+  if (req.isPublicRequest)
+    return res.json({
+      status: 'OK',
+      sale: {
+        ...sale,
+        stripeData: undefined,
+      },
+    });
+
   return res.json({
     status: 'OK',
     sale,
