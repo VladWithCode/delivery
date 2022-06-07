@@ -77,7 +77,7 @@ ctrl.saveSale = async (req, res, next) => {
 
   return res.json({
     status: 'OK',
-    savedSale,
+    sale: savedSale,
   });
 };
 
