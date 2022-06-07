@@ -58,7 +58,7 @@ function Stripe() {
           }}
           stripe={stripePromise}>
           <CardMethod />
-          <WalletMethod />
+          {/* <WalletMethod /> */}
         </Elements>
       ) : (
         <div className='load'></div>
