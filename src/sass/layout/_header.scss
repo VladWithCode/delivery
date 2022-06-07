@@ -42,10 +42,30 @@
         position: absolute;
         top: 50%;
         left: 50%;
+
+        &--1 {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &--2 {
+          display: none !important;
+        }
+
+        &--3 {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
       }
 
       .text {
         display: none;
+      }
+    }
+
+    &--bar-toggler .bar {
+      &.bar--1,
+      &.bar--2,
+      &.bar--3 {
+        display: block;
       }
     }
 
@@ -57,14 +77,6 @@
       background-color: currentColor;
       transition: 0.35s;
       transform-origin: center;
-
-      &--1 {
-        transform: translate(-50%, -50%) rotate(-45deg);
-      }
-
-      &--2 {
-        transform: translate(-50%, -50%) rotate(45deg);
-      }
     }
 
     .text {
