@@ -107,9 +107,10 @@ function CardMethod() {
       return;
     }
 
-    const resetResponse = await CartService.resetCart();
+    const resetRes = await CartService.resetCart();
 
-    if (resetResponse.status !== 'OK') console.error(res.error || res.message);
+    if (resetRes.status !== 'OK')
+      console.error(resetRes.error || resetRes.message);
 
     resetCart();
     displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
