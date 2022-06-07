@@ -37,6 +37,9 @@ const SaleSchema = new Schema({
     },
     { _id: false }
   ),
+  delivered: { type: Boolean, default: false },
+  deliveredAt: { type: Date },
+
   stripeData: {
     type: new Schema(
       {
