@@ -12,7 +12,7 @@ import makeServerRequest from '../../utils/makeServerRequest';
 function Order() {
   const { id } = useParams();
   const { lastOrder } = useContext(OrderContext);
-  const { displayErrorToast } = useContext(ToastContext);
+  const { displayErrorToast, displaySuccessToast } = useContext(ToastContext);
   const [order, setOrder] = useState(null);
   const [initialized, setInitialized] = useState(false);
 
@@ -40,10 +40,20 @@ function Order() {
     }
   }, []);
 
+  const handleIdClick = async function () {
+    try {
+      await navigator.clipboard.writeText(id);
+
+      displaySuccessToast('Copiado al portapapeles');
+    } catch (err) {
+      displayErrorToast('Error al copiar el id');
+    }
+  };
+
   return (
     <div className='container'>
       <h1 className='heading'>Detalles de su orden</h1>
-      <p className='subtitle'>
+      <p className='fs-3 mb-1'>
         Gracias por su compra. Su pedido llegara pronto a su casa :)
       </p>
       <p className='text-warning fs-4 mb-2'>
@@ -72,9 +82,9 @@ function Order() {
             <span className='card__value'>{order.zip}</span>
           </div>
           <h4 className='card__title'>Datos de la orden</h4>
-          <div className='card__row my-1'>
+          <div className='card__row my-1' onClick={handleIdClick}>
             <span className='card__concept'>ID</span>
-            <div className='card__value'>{order._id}</div>
+            <div className='card__value text-info'>{order._id}</div>
           </div>
           <div className='card__row my-1'>
             <span className='card__concept'>Pagada</span>
