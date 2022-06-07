@@ -23,3 +23,15 @@ export const recursiveBinarySearch = (list = [], target) => {
 
   return recursiveBinarySearch(list.slice(0, mid), target);
 };
+
+export const dateToReadableString = date => {
+  if (!date) return '';
+  const safeDate = date instanceof Date ? date : new Date(date);
+
+  return new Intl.DateTimeFormat('es-mx', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(safeDate);
+};
