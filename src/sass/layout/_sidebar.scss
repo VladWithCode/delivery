@@ -36,7 +36,7 @@
 
   &__header {
     display: flex;
-    height: 8rem;
+    height: 5rem;
     width: 100%;
     padding: 1rem 0;
     background-color: $color-gray-d;
@@ -58,13 +58,13 @@
 
   &__main {
     margin: auto 0;
-    max-height: calc(100% - 20rem);
+    max-height: calc(100% - 38rem);
     width: 100%;
     padding: 2rem 0;
   }
 
   &__footer {
-    height: 12rem;
+    height: 30rem;
     background-color: $color-gray-d;
     color: $color-gray-l;
   }
