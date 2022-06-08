@@ -5,7 +5,9 @@ const asyncHandler = require('../utils/asyncHandler');
 const UserSchema = new Schema({
   fullname: { type: String, required: true },
   username: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
+  email: { type: String, unique: true },
+  phone: { type: String },
+  password: { type: String, required: true, select: false },
   role: {
     type: String,
     enum: ['user', 'delivery', 'cashier', 'admin'],
