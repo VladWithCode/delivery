@@ -9,7 +9,7 @@ import CartService from './services/CartService';
 
 function App() {
   const location = useLocation();
-  const { isActive, setIsActive, contentId } = useContext(SidebarContext);
+  const { isActive, setIsActive, setContentId } = useContext(SidebarContext);
   const { setCart } = useContext(CartContext);
   const [cartInitialized, setCartInitialized] = useState(false);
   const [isMenuPage, setIsMenuPage] = useState(false);
@@ -28,8 +28,13 @@ function App() {
   }, [cartInitialized]);
 
   useEffect(() => {
-    if (location.pathname === '/') setIsMenuPage(true);
-    else setIsMenuPage(false);
+    if (location.pathname === '/') {
+      setIsMenuPage(true);
+      setContentId('FILTERS');
+    } else {
+      setIsMenuPage(false);
+      setContentId('NAVIGATION');
+    }
   }, [location]);
 
   return (
