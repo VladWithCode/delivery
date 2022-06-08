@@ -8,7 +8,7 @@ env.DEBUG = process.env.DEBUG || false;
 
 env.PORT = process.env.PORT || 3030;
 
-env.DB_URI = process.env.DB_URI;
+env.DB_URI = process.env.DB_URI || 'mongodb://127.0.0.1/delivery';
 
 env.PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || '';
 
