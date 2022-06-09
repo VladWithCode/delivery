@@ -43,6 +43,7 @@ const mdbStore = new (sessionStorage(session))(
 const publicRoutes = require('./routes/public.routes');
 const protectedRoutes = require('./routes/protected.routes');
 const privateRoutes = require('./routes/private.routes');
+const isAuthenticated = require('./middlewares/isAuthenticated');
 
 // Settings
 app.set('public', PUBLIC_DIR);
@@ -84,7 +85,7 @@ if (DEBUG) {
 // Routes
 app.use('/api/public', publicRoutes);
 app.use('/api/protected', protectedRoutes);
-app.use('/api/private', privateRoutes);
+app.use('/api/private', isAuthenticated, privateRoutes);
 
 // Static Files
 app.use('/files', express.static(app.get('public')));
