@@ -18,7 +18,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre('save', async function (next) {
-  if (!this.isModified('pass')) return next();
+  if (!this.isModified('password')) return next();
 
   const [hashedPass, hashError] = await asyncHandler(
     bcrypt.hash(this.password, 10)
@@ -31,7 +31,7 @@ UserSchema.pre('save', async function (next) {
 });
 
 UserSchema.methods.validatePass = async function (pw) {
-  return await bcrypt.compare(pw, this.pass);
+  return await bcrypt.compare(pw, this.password);
 };
 
 module.exports = model('User', UserSchema);
