@@ -85,8 +85,10 @@ ctrl.signIn = async (req, res, next) => {
 
         return res.json({
           status: 'OK',
-          message: 'Autenticado con exito',
-          user,
+          user: {
+            ...user.toJSON(),
+            password: undefined,
+          },
         });
       });
     }
