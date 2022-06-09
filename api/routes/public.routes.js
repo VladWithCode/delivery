@@ -1,5 +1,6 @@
 const Router = require('express').Router;
 
+const authRoutes = require('./public/auth.routes');
 const productRoutes = require('./public/product.routes');
 const stripeRoutes = require('./public/stripe.routes');
 const saleRoutes = require('./public/sale.routes');
@@ -11,6 +12,8 @@ router.use((req, _, next) => {
 
   return next();
 });
+
+router.use('/auth', authRoutes);
 
 router.use('/products', productRoutes);
 
