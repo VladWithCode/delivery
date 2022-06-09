@@ -8,9 +8,7 @@ passport.serializeUser((_, user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  const [admin, findError] = await asyncHandler(
-    User.findById(id).select({ password: 1 })
-  );
+  const [admin, findError] = await asyncHandler(User.findById(id));
 
   if (findError) return done(findError, false);
 
@@ -24,24 +22,24 @@ passport.use(
   'local.signin',
   new LocalStrategy(
     {
-      usernameField: 'user',
-      passwordField: 'pass',
+      usernameField: 'username',
+      passwordField: 'password',
     },
-    async (username, password, done) => {
-      const [admin, findError] = await asyncHandler(
-        User.findOne({ username }).lean()
+    async (username, _, done) => {
+      const [user, findError] = await asyncHandler(
+        User.findOne({ username }).select('+password')
       );
 
       if (findError)
         return done(findError, false, { message: 'Error al iniciar sesión' });
 
-      if (!admin) {
+      if (!user) {
         return done(undefined, false, {
           message: `El usuario ${username} no existe.`,
         });
       }
 
-      return done(undefined, admin);
+      return done(undefined, user);
     }
   )
 );
