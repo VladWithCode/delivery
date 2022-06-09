@@ -2,20 +2,42 @@ process.env.NODE_ENV !== 'production' && require('dotenv').config();
 
 // Modules
 const express = require('express');
+const session = require('express-session');
+const sessionStorage = require('connect-mongodb-session');
+const cookieParser = require('cookie-parser');
 const busboyBodyParser = require('busboy-body-parser');
 const cors = require('cors');
 const compression = require('compression');
-const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 // expressjs app
 const app = express();
 
 // Config
 require('./config/db');
+require('./config/passport');
 
 // Import required Enviroment Vars
-const { PORT, COOKIE_SECRET, CORS_ORIGIN, DEBUG } = require('./config/env');
+const {
+  PORT,
+  COOKIE_SECRET,
+  CORS_ORIGIN,
+  DEBUG,
+  DB_URI,
+  SESSION_SECRET,
+} = require('./config/env');
 const { PUBLIC_DIR } = require('./config/globals');
+
+const mdbStore = new (sessionStorage(session))(
+  {
+    collection: 'sessions',
+    uri: DB_URI,
+    expires: 1000 * 60 * 60 * 24,
+  },
+  err => {
+    if (err) throw err;
+  }
+);
 
 // Route Imports
 const publicRoutes = require('./routes/public.routes');
@@ -38,6 +60,20 @@ app.use(express.json({ limit: '30mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(busboyBodyParser({ limit: '30mb', multi: true }));
 app.use(cookieParser(COOKIE_SECRET));
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: SESSION_SECRET,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 6, // 6 hours
+      sameSite: 'strict',
+    },
+    store: mdbStore,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(compression({ threshold: 1000 }));
 
 // If on development enviroment, use morgan
@@ -63,7 +99,7 @@ app.use((error, _req, res, _next) => {
   };
 
   if (DEBUG) {
-    console.log(error);
+    console.error(error);
     response.error = error;
   }
 
