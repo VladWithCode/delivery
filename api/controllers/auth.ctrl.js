@@ -5,7 +5,7 @@ const { isEmptyObject } = require('../utils/helpers');
 
 const ctrl = {};
 
-ctrl.check = (req, res) => {
+ctrl.checkAuth = (req, res) => {
   if (!req.isAuthenticated())
     return res.json({
       authenticated: false,
@@ -13,13 +13,10 @@ ctrl.check = (req, res) => {
 
   return res.json({
     authenticated: true,
-  });
-};
-
-ctrl.getCurrentUser = (req, res) => {
-  return res.json({
-    status: 'OK',
-    user: { ...req.user.toJSON(), password: undefined },
+    user: {
+      ...req.user.toJSON(),
+      password: undefined,
+    },
   });
 };
 

@@ -2,17 +2,14 @@ const {
   signIn,
   signOut,
   signUp,
-  check,
-  getCurrentUser,
+  checkAuth,
 } = require('../../controllers/auth.ctrl');
 
 const Router = require('express').Router;
 
 const router = Router();
 
-router.get('/current', getCurrentUser);
-
-router.get('/', check);
+router.get('/', checkAuth);
 
 router.post('/', signUp);
 
