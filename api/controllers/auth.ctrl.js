@@ -16,8 +16,15 @@ ctrl.check = (req, res) => {
   });
 };
 
+ctrl.getCurrentUser = (req, res) => {
+  return res.json({
+    status: 'OK',
+    user: { ...req.user.toJSON(), password: undefined },
+  });
+};
+
 ctrl.signUp = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { fullname, username, email, phone, password } = req.body;
 
   const existingUser = await User.exists({
     $or: [{ email }, { username }],
@@ -30,8 +37,10 @@ ctrl.signUp = async (req, res, next) => {
     });
 
   const user = new User({
+    fullname,
     username,
     email,
+    phone,
     password,
   });
 
