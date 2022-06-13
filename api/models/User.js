@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const asyncHandler = require('../utils/asyncHandler');
 
 const UserSchema = new Schema({
-  fullname: { type: String, required: true },
+  fullname: { type: String },
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true },
   phone: { type: String },
