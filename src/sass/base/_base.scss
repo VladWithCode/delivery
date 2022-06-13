@@ -39,6 +39,10 @@ body {
   scroll-behavior: smooth;
 }
 
+#root {
+  position: relative;
+}
+
 a {
   color: inherit;
   text-decoration: none;
