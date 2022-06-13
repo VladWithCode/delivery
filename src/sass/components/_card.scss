@@ -83,6 +83,9 @@
     margin: 1rem 0;
     font-size: 1.6rem;
     font-weight: 600;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__description {
