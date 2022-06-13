@@ -1,0 +1,15 @@
+.dashboard {
+  &__sidebar .sidebar {
+    &__footer {
+      height: 20rem;
+    }
+  }
+
+  &__footer {
+    grid-template-rows: 3rem 15rem 2rem;
+
+    .footer__copy {
+      grid-row: -1 / -2;
+    }
+  }
+}
