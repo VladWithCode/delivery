@@ -4,6 +4,23 @@ const cartService = require('../services/cart.service');
 
 const ctrl = {};
 
+ctrl.getSales = async (req, res, next) => {
+  const [sales, findError] = await asyncHandler(saleService.getSales());
+
+  if (findError) return next(findError);
+
+  if (!sales || sales.length === 0)
+    return res.json({
+      status: 'NO_SALES',
+      message: 'No se encontraron ordenes',
+    });
+
+  return res.json({
+    status: 'OK',
+    sales: sales,
+  });
+};
+
 ctrl.getSale = async (req, res, next) => {
   const { id } = req.params;
 
