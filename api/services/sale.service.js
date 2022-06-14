@@ -14,6 +14,10 @@ class SaleService {
     return sale;
   }
 
+  async getSales() {
+    return await Sale.find({}).sort({ createdAt: -1 });
+  }
+
   async getSale(id) {
     return await Sale.findOne({ _id: id }).lean();
   }
