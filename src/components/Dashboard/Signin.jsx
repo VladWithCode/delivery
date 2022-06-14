@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../context/Auth/AuthContext';
 import ToastContext from '../../context/Toast/ToastContext';
+import { useAuth } from '../../hooks/useAuth';
 import { useForm } from '../../hooks/useForm';
 import { signIn } from '../../services/AuthService';
 
 function Signin() {
   const navigate = useNavigate();
   const { displaySuccessToast, displayErrorToast } = useContext(ToastContext);
-  const { setUser, isAuthenticated, isAdmin } = useContext(AuthContext);
+  const { setUser, isAuthenticated, isAdmin } = useAuth();
   const [values, handleInputChange] = useForm({
     username: '',
     password: '',
