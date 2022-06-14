@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import AuthContext from '../../context/Auth/AuthContext';
 import SidebarContext from '../../context/Sidebar/SidebarContext';
+import { useAuth } from '../../hooks/useAuth';
 import Toast from '../Toast/Toast';
 import Header from './Layout/Header';
 import Sidebar from './Layout/Sidebar';
@@ -10,13 +10,13 @@ import Sidebar from './Layout/Sidebar';
 function Dashboard() {
   const navigate = useNavigate();
   const { isActive, setIsActive } = useContext(SidebarContext);
-  const { isAdmin } = useContext(AuthContext);
+  const { isAdmin, init } = useAuth();
 
   useEffect(() => {
-    if (!isAdmin) {
-      navigate('/', { replace: true });
+    if (init && !isAdmin) {
+      navigate('/admin/sign-in', { replace: true });
     }
-  }, [isAdmin]);
+  }, [isAdmin, init]);
 
   return (
     <>
