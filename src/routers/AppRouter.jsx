@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from '../App';
 import Checkout from '../components/Checkout/Checkout';
 import Dashboard from '../components/Dashboard/Dashboard';
+import Orders from '../components/Dashboard/Orders';
 import Signin from '../components/Dashboard/Signin';
 import Home from '../components/Home/Home';
 import NotFound from '../components/NotFound/NotFound';
 import Order from '../components/Order/Order';
+import { DashboardProvider } from '../context/Dashboard/DashboardProvider';
 
 function AppRouter() {
   return (
@@ -19,8 +21,14 @@ function AppRouter() {
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='/admin/sign-in' element={<Signin />} />
-        <Route path='/admin' element={<Dashboard />}>
-          {/* <Route index element={}></Route> */}
+        <Route
+          path='/admin'
+          element={
+            <DashboardProvider>
+              <Dashboard />
+            </DashboardProvider>
+          }>
+          <Route index element={<Orders />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
