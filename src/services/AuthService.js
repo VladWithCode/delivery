@@ -5,9 +5,9 @@ import makeServerRequest from '../utils/makeServerRequest';
  * @returns {any | false} The authenticated `user` if there's one, false otherwise
  */
 export const checkAuth = async () => {
-  const res = await makeServerRequest('/public/auth');
+  const res = await makeServerRequest('/public/auth', { useAuth: true });
 
-  if (res.isAuthenticated) return res.user;
+  if (res.authenticated) return res.user;
 
   return false;
 };
