@@ -20,6 +20,12 @@
     opacity: 0.65;
   }
 
+  &--sm {
+    --btn-fz: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 1.4rem;
+  }
+
   &--submit {
     background-color: $color-success;
     border-color: $color-success;
