@@ -10,6 +10,7 @@ import {
 import { checkAuth } from '../../services/AuthService';
 
 export const AuthProvider = ({ children }) => {
+  const [init, setInit] = useState(false);
   const initialState = {
     isAuthenticated: false,
     isAdmin: false,
@@ -48,6 +49,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    setInit(true);
     if (!state.user) {
       setIsAuthenticated(false);
       setIsAdmin(false);
@@ -66,6 +68,7 @@ export const AuthProvider = ({ children }) => {
         isAdmin: state.isAdmin,
         user: state.user,
         redirectTo: state.redirectTo,
+        init: init,
         setUser,
         setIsAuthenticated,
         setIsAdmin,
