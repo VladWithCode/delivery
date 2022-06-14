@@ -1,3 +1,4 @@
+import asyncHandler from '../utils/asyncHandler';
 import makeServerRequest from '../utils/makeServerRequest';
 
 class SaleService {
@@ -20,6 +21,33 @@ class SaleService {
       body: reqBody,
       headers: { 'Content-Type': 'application/json' },
     });
+  }
+
+  async getSales() {
+    const [res, fetchError] = await asyncHandler(
+      makeServerRequest('/public/sales', {
+        useAuth: true,
+      })
+    );
+
+    if (fetchError) {
+      console.error(fetchError);
+      return {
+        toastMessage: 'Ocurrio un error al conectar con el servidor',
+        failed: true,
+      };
+    }
+
+    if (res.status !== 'OK') {
+      res.error && console.error(res.error);
+
+      return {
+        toastMessage: res.message || 'Ocurrio un error al recuperar las ventas',
+        failed: false,
+      };
+    }
+
+    return { sales: res.sales, failed: false };
   }
 }
 
