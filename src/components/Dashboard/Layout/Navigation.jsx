@@ -7,11 +7,11 @@ function Navigation() {
 
   return (
     <div className='footer__navigation'>
-      <NavigationLink classNameFn={classNameFn} to='/admin' label='Panel' />
+      <NavigationLink classNameFn={classNameFn} to='/admin' label='Ordenes' />
       <NavigationLink
         classNameFn={classNameFn}
         to='/admin/stats'
-        label='Stats'
+        label='Ventas'
       />
     </div>
   );
