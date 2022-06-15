@@ -1,7 +1,9 @@
 const { model, Schema, SchemaTypes } = require('mongoose');
+const { nanoid } = require('nanoid');
 
 const SaleSchema = new Schema(
   {
+    _id: { type: String, default: () => nanoid(10) },
     customer: new Schema(
       {
         id: String,
@@ -52,7 +54,19 @@ const SaleSchema = new Schema(
       required: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true, _id: false }
 );
+
+SaleSchema.pre('save', function (next) {
+  if (this.isModified('delivered') && !this.deliveredAt) {
+    this.deliveredAt = Date.now();
+  }
+
+  if (this.isModified('payment.isPayed') && !this.payment.payedOn) {
+    this.payment.payedOn = Date.now();
+  }
+
+  next();
+});
 
 module.exports = model('Sale', SaleSchema);
