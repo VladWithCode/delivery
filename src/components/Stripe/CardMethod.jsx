@@ -12,8 +12,13 @@ import CartService from '../../services/CartService';
 import StripeService from '../../services/StripeService';
 
 function CardMethod() {
-  const { customerInfo, paymentInfo, setStripeIntentId, setCheckoutStep } =
-    useContext(OrderContext);
+  const {
+    customerInfo,
+    paymentInfo,
+    setStripeIntentId,
+    setCheckoutStep,
+    resetOrderContext,
+  } = useContext(OrderContext);
   const { displaySuccessToast, displayErrorToast, displayInfoToast } =
     useContext(ToastContext);
   const { resetCart, subtotal, tax, shipment, items } = useContext(CartContext);
@@ -114,6 +119,7 @@ function CardMethod() {
 
     resetCart();
     displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
+    resetOrderContext();
     navigate('/orden/' + res.sale._id);
   };
 

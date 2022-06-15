@@ -58,6 +58,13 @@ function OrderProvider({ children }) {
     dispatch({ type: SET_LAST_ORDER, payload: orderData });
   };
 
+  const resetOrderContext = () => {
+    setCheckoutStep(initialState.checkoutStep);
+    setCustomerInfo(initialState.customerInfo);
+    setPaymentInfo(initialState.paymentInfo);
+    setLastOrder(initialState.lastOrder);
+  };
+
   /**
    *
    * @param {'CONFIRM_ORDER' | 'CUSTOMER_INFO' | 'PAYMENT_METHOD_SELECTION' | 'COMPLETE_PAYMENT' | 'ORDER_DETAILS'} step -
@@ -80,6 +87,7 @@ function OrderProvider({ children }) {
         setStripeIntentId,
         setStripeClientSecret,
         setLastOrder,
+        resetOrderContext,
       }}>
       {children}
     </OrderContext.Provider>

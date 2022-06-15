@@ -7,7 +7,8 @@ import CartService from '../../services/CartService';
 import SaleService from '../../services/SaleService';
 
 function CashPayment() {
-  const { customerInfo, setCheckoutStep } = useContext(OrderContext);
+  const { customerInfo, setCheckoutStep, resetOrderContext } =
+    useContext(OrderContext);
   const { displaySuccessToast, displayErrorToast } = useContext(ToastContext);
   const { resetCart, subtotal, tax, shipment, items } = useContext(CartContext);
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ function CashPayment() {
 
     resetCart();
     displaySuccessToast('Pago exitoso. ¡Su orden esta en camino!');
+    resetOrderContext();
     navigate('/orden/' + saveRes.sale._id);
   };
 
