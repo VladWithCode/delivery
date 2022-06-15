@@ -18,12 +18,15 @@ const DashboardReducer = (state, action) => {
 
     case UPDATE_ORDER:
       const { id, order } = payload;
-      const newOrders = [...state.orders];
+      const newOrders = [];
 
-      for (let o of newOrders) {
-        if (order._id !== id) continue;
+      for (let o of state.orders) {
+        if (o._id !== id) {
+          newOrders.push(o);
+          continue;
+        }
 
-        o = order;
+        newOrders.push(order);
       }
 
       return {
