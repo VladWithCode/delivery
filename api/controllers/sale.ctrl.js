@@ -38,7 +38,7 @@ ctrl.getSale = async (req, res, next) => {
     return res.json({
       status: 'OK',
       sale: {
-        ...sale,
+        ...sale.toJSON(),
         stripeData: undefined,
       },
     });
@@ -75,6 +75,32 @@ ctrl.saveSale = async (req, res, next) => {
   });
 
   const [savedSale, saveError] = await asyncHandler(saleService.saveSale(sale));
+
+  if (saveError) return next(saveError);
+
+  return res.json({
+    status: 'OK',
+    sale: savedSale,
+  });
+};
+
+ctrl.updateSale = async (req, res, next) => {
+  const { id } = req.params;
+  const saleData = req.body;
+
+  const [sale, findError] = await asyncHandler(saleService.getSale(id));
+
+  if (findError) next(findError);
+
+  if (!sale)
+    return res.json({
+      status: 'NOT_FOUND',
+      message: 'No se encontro una venta con id: ' + id,
+    });
+
+  sale.set(saleData);
+
+  const [savedSale, saveError] = await asyncHandler(sale.save());
 
   if (saveError) return next(saveError);
 
