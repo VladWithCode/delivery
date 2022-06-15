@@ -14,9 +14,9 @@
   }
 }
 
-.dash-orders {
+.order-card {
   width: 65rem;
-  height: 45rem;
+  max-height: 45rem;
   max-width: 90%;
   border-radius: 2rem;
   border: 1px solid $color-gray-l;
@@ -30,7 +30,7 @@
   }
 
   &__content {
-    height: 40rem;
+    max-height: 40rem;
   }
 
   &__listing {
@@ -43,7 +43,60 @@
 
     &:hover,
     &:active {
-      background-color: lighten($color-gray-d, 5%);
+      background-color: lighten($color-gray-d, 15%);
     }
+
+    .name {
+      width: 40%;
+    }
+
+    .content {
+      margin: auto;
+    }
+
+    .price {
+      width: 20%;
+      text-align: right;
+    }
+  }
+
+  &__no-content {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.dash-detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__dropshadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-gray-d;
+    opacity: 0.35;
+  }
+
+  &__card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 40rem;
   }
 }
