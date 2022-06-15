@@ -9,22 +9,22 @@ import { signIn } from '../../services/AuthService';
 function Signin() {
   const navigate = useNavigate();
   const { displaySuccessToast, displayErrorToast } = useContext(ToastContext);
-  const { setUser, isAuthenticated, isAdmin } = useAuth();
+  const { setUser, isAuthenticated, isAdmin, init } = useAuth();
   const [values, handleInputChange] = useForm({
     username: '',
     password: '',
   });
 
   useEffect(() => {
-    if (isAdmin) {
+    if (init && isAdmin) {
       navigate('/admin', { replace: true });
       return;
     }
 
-    if (isAuthenticated) {
+    if (init && isAuthenticated) {
       navigate('/', { replace: true });
     }
-  }, [isAuthenticated, isAdmin]);
+  }, [isAuthenticated, isAdmin, init]);
 
   const handleSignIn = async e => {
     e.preventDefault();
