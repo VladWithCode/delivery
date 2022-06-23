@@ -53,7 +53,7 @@ function Modal() {
         <img
           src={SERVER_URL.concat(info.img)}
           alt='pollo'
-          className='card__img m-0'
+          className='card__img mx-auto my-0'
         />
         <h4 className='card__title fs-2 fw-500'>{info.name}</h4>
         <p className='card__concept'>{info.description}</p>
