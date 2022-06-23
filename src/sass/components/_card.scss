@@ -85,7 +85,7 @@
   }
 
   &__title {
-    margin: 1rem 0;
+    margin-bottom: 1rem;
     font-size: 1.6rem;
     font-weight: 600;
     word-break: break-all;
@@ -191,5 +191,9 @@
 
   &--dark &__value {
     color: $color-gray-l;
+  }
+
+  &__separator {
+    margin: 0.3rem 0 0.7rem;
   }
 }
