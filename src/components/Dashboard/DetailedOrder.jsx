@@ -64,10 +64,7 @@ function DetailedOrder({ active, setActive }) {
           ''
         ) : (
           <>
-            <span
-              className='card__close my-auto'
-              style={{ top: '1.8rem', right: '1.8rem' }}
-              onClick={handleClose}>
+            <span className='card__close my-auto' onClick={handleClose}>
               &times;
             </span>
             <h4 className='card__title'>Detalles</h4>
