@@ -50,6 +50,7 @@
 }
 
 .text {
+  // Align
   &-left {
     text-align: left !important;
   }
@@ -62,8 +63,13 @@
     text-align: center !important;
   }
 
+  // Color
   &-mute {
     color: $color-gray-l !important;
+  }
+
+  &-reset-color {
+    color: inherit !important;
   }
 
   &-primary {
@@ -72,6 +78,10 @@
 
   &-secondary {
     color: $color-secondary !important;
+  }
+
+  &-black {
+    color: $color-black !important;
   }
 
   &-success {
