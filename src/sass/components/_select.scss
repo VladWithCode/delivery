@@ -1,0 +1,37 @@
+.select {
+  position: relative;
+  width: 8rem;
+  height: 3rem;
+
+  &.active {
+    border-color: $color-gray-d;
+  }
+
+  &__display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid $color-gray-l;
+    border-radius: 4px;
+  }
+
+  &__control {
+    display: none;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      fill: currentColor;
+      transform: rotate(90deg);
+    }
+  }
+}
