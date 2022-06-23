@@ -4,7 +4,7 @@ import { priceToString } from '../../utils/helpers';
 function Order({ id, order, handleOrderSelect }) {
   return (
     <div
-      className='order-card__item card card--dark card--noshadow mb-1'
+      className='dash-card__item card card--dark card--noshadow mb-1'
       onClick={() => handleOrderSelect(id)}>
       <div className='card__row fs-4 mb-0 text-info'>
         <p className='name fw-500'>{order.customer.name}</p>
