@@ -4,6 +4,7 @@ import App from '../App';
 import Checkout from '../components/Checkout/Checkout';
 import Dashboard from '../components/Dashboard/Dashboard';
 import Orders from '../components/Dashboard/Orders';
+import Sales from '../components/Dashboard/Sales';
 import Signin from '../components/Dashboard/Signin';
 import Home from '../components/Home/Home';
 import NotFound from '../components/NotFound/NotFound';
@@ -16,11 +17,11 @@ function AppRouter() {
       <Routes>
         <Route path='/' element={<App />}>
           <Route index element={<Home />} />
-          <Route path='/checkout' element={<Checkout />} />
-          <Route path='/orden/:id' element={<Order />} />
+          <Route path='checkout' element={<Checkout />} />
+          <Route path='orden/:id' element={<Order />} />
           <Route path='*' element={<NotFound />} />
         </Route>
-        <Route path='/admin/sign-in' element={<Signin />} />
+        <Route path='admin/sign-in' element={<Signin />} />
         <Route
           path='/admin'
           element={
@@ -28,7 +29,8 @@ function AppRouter() {
               <Dashboard />
             </DashboardProvider>
           }>
-          <Route index element={<Orders />}></Route>
+          <Route index element={<Orders />} />
+          <Route path='ventas' element={<Sales />} />
         </Route>
       </Routes>
     </BrowserRouter>
