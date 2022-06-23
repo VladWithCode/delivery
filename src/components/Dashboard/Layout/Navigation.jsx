@@ -10,7 +10,7 @@ function Navigation() {
       <NavigationLink classNameFn={classNameFn} to='/admin' label='Ordenes' />
       <NavigationLink
         classNameFn={classNameFn}
-        to='/admin/stats'
+        to='/admin/ventas'
         label='Ventas'
       />
     </div>
