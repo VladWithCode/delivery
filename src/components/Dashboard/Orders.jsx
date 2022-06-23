@@ -8,34 +8,12 @@ function Orders() {
       <h1 className='fs-2 px-3 mb-2'>Ordenes</h1>
       <OrderListing
         title={'Ordenes Pendientes'}
-        mappingFn={(orders, handleOrderSelect) =>
-          orders
-            .filter(o => !o.delivered)
-            .map(o => (
-              <Order
-                id={o._id}
-                order={o}
-                handleOrderSelect={handleOrderSelect}
-                key={o._id}
-              />
-            ))
-        }
+        mappingFn={orders => orders.filter(o => !o.delivered)}
       />
       <OrderListing
         title={'Ordenes Finalizadas'}
         className='mt-2'
-        mappingFn={(orders, handleOrderSelect) =>
-          orders
-            .filter(o => o.delivered)
-            .map(o => (
-              <Order
-                id={o._id}
-                order={o}
-                handleOrderSelect={handleOrderSelect}
-                key={o._id}
-              />
-            ))
-        }
+        mappingFn={orders => orders.filter(o => o.delivered)}
       />
     </div>
   );
