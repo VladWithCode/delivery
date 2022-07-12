@@ -29,9 +29,7 @@ function Menu() {
   return (
     <div className='menu container container--grid pb-5'>
       <h1 className='menu__title heading'>Menu</h1>
-      <h5 className='menu__subtitle subtitle text-center'>
-        ¿Qué se te antoja comer hoy?
-      </h5>
+      <h5 className='menu__subtitle subtitle'>¿Qué se te antoja comer hoy?</h5>
       {Object.keys(menu)
         .filter(ctg => ctgs.length === 0 || ctgs.includes(ctg))
         .map(ctg => (

@@ -3,15 +3,39 @@
   grid-template-rows: 5rem 5rem;
   grid-auto-rows: 35rem;
 
+  @include media('>=desktop') {
+    grid-template-rows: 6rem 4rem;
+    grid-auto-rows: 40rem;
+  }
+
+  &__title {
+    @include media('>=desktop') {
+      padding-left: 3rem;
+    }
+  }
+
+  &__subtitle {
+    text-align: center;
+
+    @include media('>=desktop') {
+      text-align: left;
+      padding-left: 1.6rem;
+      font-size: 1.8rem;
+    }
+  }
+
   &__listing {
     position: relative;
     width: 100%;
     overflow-x: scroll;
-    overflow-y: visible;
     padding: 0.5rem 1rem 1.5rem;
     margin: 1rem -1rem 1.5rem;
     display: flex;
     list-style: none;
+
+    @include media('>=desktop') {
+      overflow-x: auto;
+    }
   }
 
   &__spinner {
@@ -34,11 +58,23 @@
   }
 
   &__item {
-    flex: 1 0 23rem;
+    flex: 0 0 23rem;
     cursor: pointer;
     margin: 0;
     transition: transform 0.35s, box-shadow 0.35s;
     user-select: none;
+
+    @include media('>=desktop') {
+      flex-basis: 30rem;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      img {
+        margin: auto;
+      }
+    }
 
     &:not(:last-child) {
       margin-right: 2rem;

@@ -11,12 +11,22 @@
     right: 0;
   }
 
+  @include media('>=desktop') {
+    right: 0;
+    z-index: $z-base;
+    width: 34vw;
+  }
+
   &__drop-shadow {
     background-color: $color-white;
     width: 100%;
     height: 100%;
     opacity: 0.35;
     z-index: $z-below;
+
+    @include media('>=desktop') {
+      display: none;
+    }
   }
 
   &__content {
@@ -32,6 +42,15 @@
     right: 0;
     z-index: $z-fixed;
     background-color: $color-white;
+
+    @include media('>=desktop') {
+      background: transparent;
+      width: 90%;
+      max-width: none;
+      padding: 5rem 0 0;
+      box-shadow: none;
+      background-color: $color-gray-d;
+    }
   }
 
   &__header {
@@ -41,12 +60,28 @@
     padding: 1rem 0;
     background-color: $color-gray-d;
     color: $color-white;
+
+    @include media('>=desktop') {
+      background-color: $color-white;
+      color: $color-gray-d;
+      padding: 1rem 17% 0;
+    }
   }
 
   &__heading {
     font-size: 2rem;
     margin: auto;
     margin-left: 2rem;
+
+    @include media('>=desktop') {
+      display: none;
+      font-size: 2.6rem;
+      font-weight: 400;
+
+      &.desktop {
+        display: block;
+      }
+    }
   }
 
   &__logo {
@@ -61,11 +96,27 @@
     max-height: calc(100% - 50rem);
     width: 100%;
     padding: 2rem 0;
+
+    @include media('>=desktop') {
+      max-height: none;
+      height: 45vh;
+      background-color: $color-white;
+      margin: 0;
+      padding: 2rem 0;
+    }
   }
 
   &__footer {
-    height: 45rem;
     background-color: $color-gray-d;
     color: $color-gray-l;
+
+    @include media('>=desktop') {
+      background-color: transparent;
+      height: calc(100% - 45vh);
+
+      .footer {
+        height: 100%;
+      }
+    }
   }
 }

@@ -33,6 +33,7 @@ function Summary() {
           </svg>
         </div>
         <h3 className='summary__title'>CARRITO</h3>
+        <div className='summary__close'>&times;</div>
       </div>
       <Listing items={items} />
       <div className='summary__subtotal'>

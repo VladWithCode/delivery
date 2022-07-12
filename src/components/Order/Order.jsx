@@ -63,7 +63,7 @@ function Order() {
       {!initialized ? (
         <div className='spinner my-5'></div>
       ) : !isEmptyObject(order) ? (
-        <div className='card card--dark'>
+        <div className='order__details card card--dark my-1'>
           <h4 className='card__title'>Datos del cliente</h4>
           <div className='card__row my-1'>
             <span className='card__concept'>Cliente</span>

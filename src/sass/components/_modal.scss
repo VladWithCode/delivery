@@ -26,6 +26,9 @@
   &__card {
     width: 85%;
     margin: auto;
-    z-index: $z-toast;
+
+    @include media('>=desktop') {
+      max-width: 25vw;
+    }
   }
 }
